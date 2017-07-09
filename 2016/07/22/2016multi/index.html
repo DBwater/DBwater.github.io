@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>2016 Multi-University Training Contest 1题解 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="多校题解">
+<meta name="keywords" content="acm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2016 Multi-University Training Contest 1题解">
+<meta property="og:url" content="http://yoursite.com/2016/07/22/2016multi/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="多校题解">
+<meta property="og:updated_time" content="2017-07-09T07:09:52.639Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2016 Multi-University Training Contest 1题解">
+<meta name="twitter:description" content="多校题解">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="//img/lufei.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">John Doe</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/archives">博客首页</a></li>
+                        
+                            <li><a href="/tags/随笔">随笔</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/DBwater" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://www.zhihu.com/people/huang-meng-wei-80" title="zhihu">zhihu</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/ACM/" style="font-size: 15px;">ACM</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/acm/" style="font-size: 20px;">acm</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/编译原理/" style="font-size: 10px;">编译原理</a> <a href="/tags/网络流/" style="font-size: 10px;">网络流</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://lyeec.me">Lyeec</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://kingofprank.com">kingofprank</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">弱者为何而战，为尊严，为荣誉，为了证明自己不是弱者</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">John Doe</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="//img/lufei.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">John Doe</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives">博客首页</a></li>
+                
+                    <li><a href="/tags/随笔">随笔</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/DBwater" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/huang-meng-wei-80" title="zhihu">zhihu</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-2016multi" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/22/2016multi/" class="article-date">
+      <time datetime="2016-07-22T09:39:34.000Z" itemprop="datePublished">2016-07-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      2016 Multi-University Training Contest 1题解
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/acm/">acm</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>多校题解<br><a id="more"></a><br>吐槽:特么这么弱玩你妹的acm，回家种田多好TAT。。。。</p>
+<h1 id="A-Abandoned-country"><a href="#A-Abandoned-country" class="headerlink" title="A.Abandoned country"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5723" target="_blank" rel="external">A.Abandoned country</a></h1><p><strong>题意:</strong><br>    给一个图求他的最小生成树，在最小生成树基础上求任意两点之间距离的平均值</p>
+<p><strong>思路:</strong><br>    最小生成树直接并查集求就行，对于每条边，统计所有的路径用到此边的次数，也就是边的两端的点数之积。那么这条边的总贡献就是次数<em>边 权。最后得到所有边的贡献之和再除以总路径数n</em>(n-1)/2n∗(n−1)/2就是答案。dfs统计每个点的子树节点个数a，就是其中一段的点数。另一边的点数用总数减去就行。</p>
+<p><strong>代码:</strong></p>
+<h3 id="查看代码"><a href="#查看代码" class="headerlink" title="查看代码"></a><a href="https://github.com/DBwater/acm_solve/blob/master/hdu5723.cpp" target="_blank" rel="external">查看代码</a></h3><h1 id="B-Chess"><a href="#B-Chess" class="headerlink" title="B.Chess"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5724" target="_blank" rel="external">B.Chess</a></h1><p><strong>题意:</strong><br>    给一个n*20的棋盘放上一些棋子每行的棋子只能往右边移动一格，如果右边有棋子就跳过这个棋子移动到下一个空的格子。直达最后没有棋子可以移动。先手移动赢输出yes，否则输出no。</p>
+<p><strong>思路:</strong><br>    就是一个sg值的递推问题，状态压缩先把每一行可能出现的状态的sg值预处理出来然后，然后根据组合游戏的结论，把每一行的状态的sg异或就能得到答案。为0则先手必败，反之亦然。</p>
+<p><strong>代码:</strong></p>
+<h3 id="查看代码-1"><a href="#查看代码-1" class="headerlink" title="查看代码"></a><a href="https://github.com/DBwater/acm_solve/blob/master/hdu5724.cpp" target="_blank" rel="external">查看代码</a></h3><h1 id="C-Game"><a href="#C-Game" class="headerlink" title="C.Game"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5725" target="_blank" rel="external">C.Game</a></h1><p><strong>题意</strong>:<br><strong>思路</strong>:<br><strong>代码</strong>:</p>
+<h1 id="D-GCD"><a href="#D-GCD" class="headerlink" title="D.GCD"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5726" target="_blank" rel="external">D.GCD</a></h1><p><strong>题意:</strong><br>    给n个元素和L,R,求ans=gcd(L,L+1…R),并求出总共有多少区间的gcd等于ans。</p>
+<p><strong>思路:</strong><br>    首先用rmq维护每段区间的gcd，因为能发现从左到右gcd一定是递减的，然后对于每个左区间,二分计算gcd(L-(L+n,L+m))相等有m-n+1个,用map统计答案。时间复杂度(n*lognlogn);</p>
+<p><strong>代码:</strong></p>
+<h3 id="查看代码-2"><a href="#查看代码-2" class="headerlink" title="查看代码"></a><a href="https://github.com/DBwater/acm_solve/blob/master/hdu5726.cpp" target="_blank" rel="external">查看代码</a></h3><h1 id="E-Necklace"><a href="#E-Necklace" class="headerlink" title="E.Necklace"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5727" target="_blank" rel="external">E.Necklace</a></h1><p><strong>题意:</strong><br>    给定n个阴珠子，n个阳珠子，把他们串成项链（相同的珠子不能相邻，即一个阳一个阴），m个信息表示第u个阳珠子如果和第v个阴珠子相邻就会使阳珠子变暗淡，问最少有多少个阳珠子会变暗淡。</p>
+<p><strong>思路:</strong><br>    首先可以把阴珠子的位置确定,时间复杂度n!，然后如阳珠子能插入对应的阴珠子前一个阴珠子之间不会变暗淡就连一条边，否则不连，然后就是跑最大图匹配得出最多有多少个阳珠子不变暗淡。总数减去就是答案。总时间复杂度就是O(n!*(n+n))。</p>
+<p><strong>代码:</strong></p>
+<h3 id="查看代码-3"><a href="#查看代码-3" class="headerlink" title="查看代码"></a><a href="https://github.com/DBwater/acm_solve/blob/master/hdu5727.cpp" target="_blank" rel="external">查看代码</a></h3><h1 id="F-PowMod"><a href="#F-PowMod" class="headerlink" title="F.PowMod"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5728" target="_blank" rel="external">F.PowMod</a></h1><p><strong>题意</strong>:<br>    k=sigm(phi(i*n))%mod[1&lt;=i&lt;=m],然后求k的无限k次方%p的结果.</p>
+<p><strong>思路</strong>:<br>    这题可以先要推出公式递归减小n,m的范围,具体推导过程可以看这里:<a href="http://blog.csdn.net/wust_zzwh/article/details/51966450" target="_blank" rel="external">戳这里</a>.<br>递归求出以后根据指数循环节定理，了解指数循环节:<a href="http://blog.csdn.net/acdreamers/article/details/8236942" target="_blank" rel="external">戳这里</a>.<br>提供一个类似题目的链接：<a href="http://blog.csdn.net/skywalkert/article/details/43955611" target="_blank" rel="external">BZOJ3884</a>.</p>
+<p><strong>代码</strong>:</p>
+<h3 id="查看代码-4"><a href="#查看代码-4" class="headerlink" title="查看代码"></a><a href="https://github.com/DBwater/acm_solve/blob/master/hdu5728.cpp" target="_blank" rel="external">查看代码</a></h3><h1 id="G-Rigid-Frameworks"><a href="#G-Rigid-Frameworks" class="headerlink" title="G.Rigid Frameworks"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5729" target="_blank" rel="external">G.Rigid Frameworks</a></h1><p><strong>题意</strong>:<br>    矩形是不稳定的，会变成平行四边形(对边也是平行的)，但是可以在矩形对角线加边，通过构成三角形使这个矩形稳定下来。给一n×m的矩形，可以在单位矩形里加两种对角线（从左上到右下，从左下到右上两种），或者不加对角线，问使这个n×m的矩形稳定下来的方案数。</p>
+<p><strong>思路</strong>:<br>    n×m的矩形有如下性质：对于任意一行，这一行的每一条竖边永远保持平行；同样，对于任意一列，这一行的每一条横边永远保持平行。<br>    就是说每一行或者每一列至少有一个短棍支撑就满足稳定，那么这个问题就能转换成连通二分图的数目有多少个了。每一行当成左边节点，每一列当成右边的节点，然后使他们连通就行。<br>    注意本题的总方案总数(即满足题意的方案数+不满足题意的方案数)是2^(n*m)不是2^(n+m)。<br><a href="http://www.dbwater.net/2016/07/25/liantong/" target="_blank" rel="external">连通二分图计数</a></p>
+<p><strong>代码</strong>:</p>
+<h3 id="查看代码-5"><a href="#查看代码-5" class="headerlink" title="查看代码"></a><a href="https://github.com/DBwater/acm_solve/blob/master/hdu5729.cpp" target="_blank" rel="external">查看代码</a></h3><h1 id="H-Shell-Necklace"><a href="#H-Shell-Necklace" class="headerlink" title="H.Shell Necklace"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5730" target="_blank" rel="external">H.Shell Necklace</a></h1><p><strong>题意</strong>:<br><strong>思路</strong>:<br><strong>代码</strong>:</p>
+<h1 id="I-Solid-Dominoes-Tilings"><a href="#I-Solid-Dominoes-Tilings" class="headerlink" title="I.Solid Dominoes Tilings"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5731" target="_blank" rel="external">I.Solid Dominoes Tilings</a></h1><p><strong>题意</strong>:<br><strong>思路</strong>:<br><strong>代码</strong>::</p>
+<h1 id="J-Subway"><a href="#J-Subway" class="headerlink" title="J.Subway"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5732" target="_blank" rel="external">J.Subway</a></h1><p><strong>题意</strong>:<br><strong>思路</strong>:<br><strong>代码</strong>:</p>
+
+      
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/07/22/2016multi/">2016 Multi-University Training Contest 1题解</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 John Doe 的个人博客">John Doe</a></p>
+        <p><span>发布时间:</span>2016年07月22日 - 17时39分</p>
+        <p><span>最后更新:</span>2017年07月09日 - 15时09分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/07/22/2016multi/" title="2016 Multi-University Training Contest 1题解">http://yoursite.com/2016/07/22/2016multi/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/07/22/2016multi/　　作者: John Doe" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2016/07/25/liantong/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          连通二分图计数
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/19/hello/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">无聊的吐槽</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#A-Abandoned-country"><span class="toc-number">1.</span> <span class="toc-text">A.Abandoned country</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看代码"><span class="toc-number">1.0.1.</span> <span class="toc-text">查看代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#B-Chess"><span class="toc-number">2.</span> <span class="toc-text">B.Chess</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看代码-1"><span class="toc-number">2.0.1.</span> <span class="toc-text">查看代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#C-Game"><span class="toc-number">3.</span> <span class="toc-text">C.Game</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#D-GCD"><span class="toc-number">4.</span> <span class="toc-text">D.GCD</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看代码-2"><span class="toc-number">4.0.1.</span> <span class="toc-text">查看代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#E-Necklace"><span class="toc-number">5.</span> <span class="toc-text">E.Necklace</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看代码-3"><span class="toc-number">5.0.1.</span> <span class="toc-text">查看代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#F-PowMod"><span class="toc-number">6.</span> <span class="toc-text">F.PowMod</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看代码-4"><span class="toc-number">6.0.1.</span> <span class="toc-text">查看代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#G-Rigid-Frameworks"><span class="toc-number">7.</span> <span class="toc-text">G.Rigid Frameworks</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看代码-5"><span class="toc-number">7.0.1.</span> <span class="toc-text">查看代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#H-Shell-Necklace"><span class="toc-number">8.</span> <span class="toc-text">H.Shell Necklace</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#I-Solid-Dominoes-Tilings"><span class="toc-number">9.</span> <span class="toc-text">I.Solid Dominoes Tilings</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#J-Subway"><span class="toc-number">10.</span> <span class="toc-text">J.Subway</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/07/22/2016multi/" data-title="2016 Multi-University Training Contest 1题解" data-url="http://yoursite.com/2016/07/22/2016multi/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/07/25/liantong/" title="上一篇: 连通二分图计数">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/07/19/hello/" title="下一篇: 无聊的吐槽">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/10/31/ubuntu/">ubutn上常用软件的配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/30/python-vim/">用vim打造py开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/19/regex1/">正则表达式引擎的构建（1）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/18/bash/">lunix命令行学习第一篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/09/wangluoliu/">网络流24题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/26/dfsx/">dfs序总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/02/2016multi4/">2016 Multi-University Training Contest4题解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/25/liantong/">连通二分图计数</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/22/2016multi/">2016 Multi-University Training Contest 1题解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/19/hello/">无聊的吐槽</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 John Doe
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

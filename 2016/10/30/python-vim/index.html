@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>用vim打造py开发环境 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="如何用vim打造一个python环境">
+<meta name="keywords" content="vim,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用vim打造py开发环境">
+<meta property="og:url" content="http://yoursite.com/2016/10/30/python-vim/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="如何用vim打造一个python环境">
+<meta property="og:image" content="http://img.blog.csdn.net/20160730115839670">
+<meta property="og:updated_time" content="2017-07-09T07:09:52.639Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用vim打造py开发环境">
+<meta name="twitter:description" content="如何用vim打造一个python环境">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20160730115839670">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="//img/lufei.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">John Doe</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/archives">博客首页</a></li>
+                        
+                            <li><a href="/tags/随笔">随笔</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/DBwater" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://www.zhihu.com/people/huang-meng-wei-80" title="zhihu">zhihu</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/ACM/" style="font-size: 15px;">ACM</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/acm/" style="font-size: 20px;">acm</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/编译原理/" style="font-size: 10px;">编译原理</a> <a href="/tags/网络流/" style="font-size: 10px;">网络流</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://lyeec.me">Lyeec</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://kingofprank.com">kingofprank</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">弱者为何而战，为尊严，为荣誉，为了证明自己不是弱者</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">John Doe</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="//img/lufei.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">John Doe</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives">博客首页</a></li>
+                
+                    <li><a href="/tags/随笔">随笔</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/DBwater" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/huang-meng-wei-80" title="zhihu">zhihu</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-python-vim" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/30/python-vim/" class="article-date">
+      <time datetime="2016-10-30T14:54:03.000Z" itemprop="datePublished">2016-10-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      用vim打造py开发环境
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>如何用vim打造一个python环境<br><a id="more"></a><br>垃圾电脑打开pycharm实在是太卡了，于是就想通过配置一些vim插件来使vim更加好使用一些，现在记录下我的经历以免以后忘记，c,c++,html,其实也可以用vim来打造相应的环境。</p>
+<h1 id="插件管理器"><a href="#插件管理器" class="headerlink" title="插件管理器"></a>插件管理器</h1><p>首先需要一个用来管理vim插件的管理器</p>
+<blockquote>
+<p>$git clone <a href="https://github.com/VundleVim/Vundle.vim.git" target="_blank" rel="external">https://github.com/VundleVim/Vundle.vim.git</a> ~/.vim/bundle/Vundle.vim</p>
+</blockquote>
+<p>把下面这段代码添加到.vimrc中，plugin的是你需要使用的插件，可以自行去掉。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">&quot; bundle配置文件</div><div class="line">set nocompatible              &quot; required</div><div class="line">filetype off                  &quot; required</div><div class="line"></div><div class="line">&quot; set the runtime path to include Vundle and initialize</div><div class="line">set rtp+=~/.vim/bundle/Vundle.vim</div><div class="line">call vundle#begin()</div><div class="line"></div><div class="line">&quot; alternatively, pass a path where Vundle should install plugins</div><div class="line">&quot;call vundle#begin(&apos;~/some/path/here&apos;)</div><div class="line"></div><div class="line">&quot; let Vundle manage Vundle, required</div><div class="line">Plugin &apos;gmarik/Vundle.vim&apos;</div><div class="line">Plugin &apos;tmhedberg/SimpylFold&apos; &quot;防止折叠超过限制</div><div class="line">Plugin &apos;vim-scripts/indentpython.vim&apos; &quot;解决自动缩进的一些小问题</div><div class="line">Bundle &apos;Valloric/YouCompleteMe&apos;</div><div class="line">Plugin &apos;scrooloose/syntastic&apos; &quot; 每次保存文件时Vim都会检查代码的语法</div><div class="line">Plugin &apos;nvie/vim-flake8&apos; &quot;检查代码风格</div><div class="line">Plugin &apos;jnurmine/Zenburn&apos;</div><div class="line">Plugin &apos;altercation/vim-colors-solarized&apos;</div><div class="line">Plugin &apos;scrooloose/nerdtree&apos; &quot;树形目录</div><div class="line">Plugin &apos;jistr/vim-nerdtree-tabs&apos;</div><div class="line">Plugin &apos;kien/ctrlp.vim&apos; &quot; cltr+p在vim中搜索文件</div><div class="line">Plugin &apos;Lokaltog/powerline&apos;, &#123;&apos;rtp&apos;: &apos;powerline/bindings/vim/&apos;&#125; &quot;状态栏插件,显示当前的虚拟环境、Git分支、正在编辑的文件</div><div class="line"></div><div class="line">&quot; Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)</div><div class="line">&quot; All of your Plugins must be added before the following line</div><div class="line">call vundle#end()            &quot; required</div><div class="line">filetype plugin indent on    &quot; required</div></pre></td></tr></table></figure></p>
+<p>然后输入进入vim,输入:PluginInstal<br>等待插件更新。</p>
+<h1 id="安装YouCompleteMe插件"><a href="#安装YouCompleteMe插件" class="headerlink" title="安装YouCompleteMe插件"></a>安装YouCompleteMe插件</h1><p>YouCompleteMe现在好像只支持高版本的vim，所以你需要卸载ubuntu自带的vim装上vim8.0。<br>自己下载YouCompleteMe的插件，它是一个代码自动补全的插件：<br>进入~/.vim/bundle/YouCompleteMe目录输入</p>
+<blockquote>
+<p>$ git clone <a href="https://github.com/Valloric/YouCompleteMe.git" target="_blank" rel="external">https://github.com/Valloric/YouCompleteMe.git</a></p>
+</blockquote>
+<p>然后进入YouCompleteMe目录，添加需要的依赖库</p>
+<blockquote>
+<p>$ cd YouCompleteMe<br>$ git submodule update –init –recursive</p>
+</blockquote>
+<p>然后安装cmake和python-dev</p>
+<blockquote>
+<p>$ sudo apt-get install cmake<br>$ sudo apt-get install python-dev</p>
+</blockquote>
+<p>之后有两种方法：<br>1.进入家目录编译</p>
+<blockquote>
+<p>$ cd ~<br>$ mkdir ycm_build<br>$ cd ycm_build<br>$ cmake -G “Unix Makefiles” . ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp<br>$ cmake –build . –target ycm_core</p>
+</blockquote>
+<p>2.直接在YouCompleteMe里面编译</p>
+<blockquote>
+<p>$ ./install.sh –clang-completer </p>
+</blockquote>
+<h2 id="配置YouCompleteMe"><a href="#配置YouCompleteMe" class="headerlink" title="配置YouCompleteMe"></a>配置YouCompleteMe</h2><p>然后进入.vimrc进行一些设置<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">"设置全局配置文件的路径  </div><div class="line">let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'</div><div class="line">"开启基于tag的补全，可以在这之后添加需要的标签路径  </div><div class="line">let g:ycm_collect_identifiers_from_tags_files = 1 </div><div class="line">"开启语义补全  </div><div class="line">let g:ycm_seed_identifiers_with_syntax = 1  </div><div class="line">"在接受补全后不分裂出一个窗口显示接受的项  </div><div class="line">set completeopt-=preview  </div><div class="line">"不显示开启vim时检查ycm_extra_conf文件的信息  </div><div class="line">let g:ycm_confirm_extra_conf=0  </div><div class="line">"每次重新生成匹配项，禁止缓存匹配项  </div><div class="line">let g:ycm_cache_omnifunc=0  </div><div class="line">"在注释中也可以补全  </div><div class="line">let g:ycm_complete_in_comments=1  </div><div class="line">"输入第一个字符就开始补全  </div><div class="line">let g:ycm_min_num_of_chars_for_completion=1 </div><div class="line">" YCM自动补全及离开插入模式后自动关闭帮助窗口</div><div class="line">let g:ycm_autoclose_preview_window_after_completion=1</div><div class="line">let g:ycm_autoclose_preview_window_after_insertion = 1</div><div class="line">"YCM配合virtualenv</div><div class="line">py &lt;&lt; EOF</div><div class="line">import os</div><div class="line">import sys</div><div class="line">if 'VIRTUAL_ENV' in os.environ:</div><div class="line">  project_base_dir = os.environ['VIRTUAL_ENV']</div><div class="line">  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')</div><div class="line">  execfile(activate_this, dict(__file__=activate_this))</div><div class="line">EOF</div></pre></td></tr></table></figure></p>
+<h1 id="vim其他插件的配置"><a href="#vim其他插件的配置" class="headerlink" title="vim其他插件的配置"></a>vim其他插件的配置</h1><h2 id="分屏设置"><a href="#分屏设置" class="headerlink" title="分屏设置"></a>分屏设置</h2><p>将:sp和:vsp分割的窗口位置放在右下角,并更改切屏的快捷键:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&quot; 将:sp和:vsp分割的窗口位置放在右下角</div><div class="line">set splitbelow </div><div class="line">set splitright</div><div class="line">&quot; 切换工作窗口的快捷键</div><div class="line">nnoremap &lt;C-J&gt; &lt;C-W&gt;&lt;C-J&gt;</div><div class="line">nnoremap &lt;C-K&gt; &lt;C-W&gt;&lt;C-K&gt;</div><div class="line">nnoremap &lt;C-L&gt; &lt;C-W&gt;&lt;C-L&gt;</div><div class="line">nnoremap &lt;C-H&gt; &lt;C-W&gt;&lt;C-H&gt;</div></pre></td></tr></table></figure>
+<h2 id="代码折叠设置"><a href="#代码折叠设置" class="headerlink" title="代码折叠设置"></a>代码折叠设置</h2><p>设置折叠代码的样式和快捷键<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&quot; 根据缩进折叠代码</div><div class="line">set foldmethod=indent</div><div class="line">set foldlevel=99</div><div class="line">&quot; 空格开启关闭折叠</div><div class="line">nnoremap &lt;space&gt; za</div><div class="line">&quot; 避免代码折叠的Bug</div><div class="line">autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr</div><div class="line">autocmd BufWinLeave *.py setlocal foldexpr&lt; foldmethod&lt;</div><div class="line">&quot; 希望看到折叠代码的文档字符串</div><div class="line">let g:SimpylFold_docstring_preview=1</div></pre></td></tr></table></figure></p>
+<h2 id="文件管理设置"><a href="#文件管理设置" class="headerlink" title="文件管理设置"></a>文件管理设置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">设置NertTreeTabs</div><div class="line">&quot; NerdTree自动忽略某些文</div><div class="line">let NERDTreeIgnore = [&apos;\.pyc$&apos;, &apos;\~$&apos;]</div><div class="line">&quot; 目录为最后一个窗口时不关闭</div><div class="line">let g:nerdtree_tabs_autoclose=0</div><div class="line">&quot; 进入vim打开目录</div><div class="line">let g:nerdtree_tabs_open_on_console_startup=1</div></pre></td></tr></table></figure>
+<h2 id="Debug功能"><a href="#Debug功能" class="headerlink" title="Debug功能"></a>Debug功能</h2><p>先下载flake8</p>
+<blockquote>
+<p>$ sudo pip install flake8</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&quot; 配合插件保存的时候检查语法是否出错</div><div class="line">set statusline+=%#warningmsg#</div><div class="line">set statusline+=%&#123;SyntasticStatuslineFlag()&#125;</div><div class="line">set statusline+=%*</div><div class="line">let g:syntastic_always_populate_loc_list = 1</div><div class="line">let g:syntastic_auto_loc_list = 1</div><div class="line">let g:syntastic_check_on_open = 1</div><div class="line">let g:syntastic_check_on_wq = 0</div></pre></td></tr></table></figure>
+<h2 id="字体-配色-状态栏"><a href="#字体-配色-状态栏" class="headerlink" title="字体,配色,状态栏"></a>字体,配色,状态栏</h2><p>更改字体，状态栏首先需要安装Powerline，支持zsh<br>安装Powerline</p>
+<blockquote>
+<p>pip install –user powerline-status</p>
+</blockquote>
+<p>安装Powerline字体 </p>
+<blockquote>
+<p>$ git clone <a href="https://github.com/powerline/fonts" target="_blank" rel="external">https://github.com/powerline/fonts</a><br>$ cd fonts/<br>$ ./install.sh</p>
+</blockquote>
+<p>然后进入命令行选择你ubuntu专用的字体<br><img src="http://img.blog.csdn.net/20160730115839670" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&quot; 让代码好看一点</div><div class="line">let python_highlight_all=1</div><div class="line">syntax on</div><div class="line">&quot; 两种不同配色方案在gui和shell下使用</div><div class="line">if has(&apos;gui_running&apos;)</div><div class="line">  set background=dark</div><div class="line">  colorscheme solarized</div><div class="line">else</div><div class="line">  colorscheme zenburn</div><div class="line">endif</div></pre></td></tr></table></figure>
+<h2 id="编译文件"><a href="#编译文件" class="headerlink" title="编译文件"></a>编译文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&quot; 编译源文件</div><div class="line">func! CompileCode()</div><div class="line">	exec &quot;w&quot;</div><div class="line">	if &amp;filetype == &quot;c&quot;</div><div class="line">             exec &quot;!gcc -Wall -std=c99 %&lt;.c -o %&lt;&quot;</div><div class="line">	elseif &amp;filetype == &quot;cpp&quot;</div><div class="line">             exec &quot;!g++ -Wall -std=c++98 %&lt;.cpp -o %&lt;&quot;</div><div class="line">	elseif &amp;filetype == &quot;python&quot;</div><div class="line">             exec &quot;!python %&lt;.py&quot;</div><div class="line">	endif</div><div class="line">endfunc</div><div class="line">&quot; 运行可执行文件</div><div class="line">func! RunCode()</div><div class="line">	exec &quot;w&quot;</div><div class="line">	if &amp;filetype == &quot;c&quot; || &amp;filetype == &quot;cpp&quot; || &amp;filetype == &quot;haskell&quot;</div><div class="line">             exec &quot;! ./%&lt;&quot;</div><div class="line">	elseif &amp;filetype == &quot;python&quot;</div><div class="line">             exec &quot;!python %&lt;.py&quot;</div><div class="line"> 	endif</div><div class="line">endfunc</div><div class="line">&quot; F5保存，编译文件</div><div class="line">map &lt;F5&gt; :call CompileCode()&lt;CR&gt;</div><div class="line">imap &lt;F5&gt; &lt;ESC&gt;:call CompileCode()&lt;CR&gt;</div><div class="line">vmap &lt;F5&gt; &lt;ESC&gt;:call CompileCode()&lt;CR&gt;</div><div class="line">&quot; F6保存、运行</div><div class="line">map &lt;F6&gt; :call RunCode()&lt;CR&gt;</div><div class="line">imap &lt;F6&gt; &lt;ESC&gt;:call RunCode()&lt;CR&gt;</div><div class="line">vmap &lt;F6&gt; &lt;ESC&gt;:call RunCode()&lt;CR&gt;</div></pre></td></tr></table></figure>
+<h2 id="其他基本配置"><a href="#其他基本配置" class="headerlink" title="其他基本配置"></a>其他基本配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">set encoding=utf-8 &quot; 支持UTF-8编码</div><div class="line">set nu &quot; 显示行号</div><div class="line">set nobackup &quot; 关闭备份</div><div class="line">set mouse=a &quot; 鼠标能用</div><div class="line">&quot; tab键，统一缩进为4个空格</div><div class="line">set expandtab</div><div class="line">set smarttab</div><div class="line">set shiftwidth=4</div><div class="line">set tabstop=4 </div><div class="line">set noswapfile  &quot; 不使用swp文件，注意，错误退出后无法恢复</div><div class="line">&quot; 根据缩进折叠代码</div><div class="line">set foldmethod=indent</div><div class="line">set foldlevel=99</div><div class="line">vmap &lt;C-c&gt; &quot;+y &quot;复制快捷键</div><div class="line">vmap &lt;C-x&gt; &quot;+x &quot;剪切快捷键</div><div class="line">set backspace=indent,eol,start &quot; 退格键不能使用的bug</div></pre></td></tr></table></figure>
+<p><a href="https://github.com/DBwater/back_up/tree/master/vim%E5%A4%87%E4%BB%BD" target="_blank" rel="external">完整配置</a></p>
+
+      
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/10/30/python-vim/">用vim打造py开发环境</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 John Doe 的个人博客">John Doe</a></p>
+        <p><span>发布时间:</span>2016年10月30日 - 22时54分</p>
+        <p><span>最后更新:</span>2017年07月09日 - 15时09分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/10/30/python-vim/" title="用vim打造py开发环境">http://yoursite.com/2016/10/30/python-vim/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/10/30/python-vim/　　作者: John Doe" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2016/10/31/ubuntu/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          ubutn上常用软件的配置
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/19/regex1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">正则表达式引擎的构建（1）</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#插件管理器"><span class="toc-number">1.</span> <span class="toc-text">插件管理器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装YouCompleteMe插件"><span class="toc-number">2.</span> <span class="toc-text">安装YouCompleteMe插件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置YouCompleteMe"><span class="toc-number">2.1.</span> <span class="toc-text">配置YouCompleteMe</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vim其他插件的配置"><span class="toc-number">3.</span> <span class="toc-text">vim其他插件的配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分屏设置"><span class="toc-number">3.1.</span> <span class="toc-text">分屏设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码折叠设置"><span class="toc-number">3.2.</span> <span class="toc-text">代码折叠设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件管理设置"><span class="toc-number">3.3.</span> <span class="toc-text">文件管理设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Debug功能"><span class="toc-number">3.4.</span> <span class="toc-text">Debug功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字体-配色-状态栏"><span class="toc-number">3.5.</span> <span class="toc-text">字体,配色,状态栏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编译文件"><span class="toc-number">3.6.</span> <span class="toc-text">编译文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他基本配置"><span class="toc-number">3.7.</span> <span class="toc-text">其他基本配置</span></a></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/10/30/python-vim/" data-title="用vim打造py开发环境" data-url="http://yoursite.com/2016/10/30/python-vim/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/10/31/ubuntu/" title="上一篇: ubutn上常用软件的配置">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/10/19/regex1/" title="下一篇: 正则表达式引擎的构建（1）">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/10/31/ubuntu/">ubutn上常用软件的配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/30/python-vim/">用vim打造py开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/19/regex1/">正则表达式引擎的构建（1）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/18/bash/">lunix命令行学习第一篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/09/wangluoliu/">网络流24题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/26/dfsx/">dfs序总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/02/2016multi4/">2016 Multi-University Training Contest4题解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/25/liantong/">连通二分图计数</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/22/2016multi/">2016 Multi-University Training Contest 1题解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/19/hello/">无聊的吐槽</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 John Doe
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

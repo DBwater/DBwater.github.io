@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>2016 Multi-University Training Contest4题解 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="多校题解">
+<meta name="keywords" content="ACM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2016 Multi-University Training Contest4题解">
+<meta property="og:url" content="http://yoursite.com/2016/08/02/2016multi4/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="多校题解">
+<meta property="og:updated_time" content="2017-07-09T07:09:52.639Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2016 Multi-University Training Contest4题解">
+<meta name="twitter:description" content="多校题解">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="//img/lufei.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">John Doe</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/archives">博客首页</a></li>
+                        
+                            <li><a href="/tags/随笔">随笔</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/DBwater" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://www.zhihu.com/people/huang-meng-wei-80" title="zhihu">zhihu</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/ACM/" style="font-size: 15px;">ACM</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/acm/" style="font-size: 20px;">acm</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/编译原理/" style="font-size: 10px;">编译原理</a> <a href="/tags/网络流/" style="font-size: 10px;">网络流</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://lyeec.me">Lyeec</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://kingofprank.com">kingofprank</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">弱者为何而战，为尊严，为荣誉，为了证明自己不是弱者</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">John Doe</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="//img/lufei.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">John Doe</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives">博客首页</a></li>
+                
+                    <li><a href="/tags/随笔">随笔</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/DBwater" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/huang-meng-wei-80" title="zhihu">zhihu</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-2016multi4" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/02/2016multi4/" class="article-date">
+      <time datetime="2016-08-01T16:08:43.000Z" itemprop="datePublished">2016-08-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      2016 Multi-University Training Contest4题解
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ACM/">ACM</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>多校题解<br><a id="more"></a><br>还是做的题少啊。。。</p>
+<h1 id="A-Another-Meaning"><a href="#A-Another-Meaning" class="headerlink" title="A.Another Meaning"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5763" target="_blank" rel="external">A.Another Meaning</a></h1><h2 id="题意"><a href="#题意" class="headerlink" title="题意:"></a><strong>题意</strong>:</h2><p>给两个字符串a,b。b有两种意思,问a一共能表达出多少种意思。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路:"></a><strong>思路</strong>:</h2><p>很明显的一个kmp+dp.首先kmp处理出b在a中出现的位置用used数组记录,然后可以dp[i]表示从开头到i有多少种意思。那么可以很容易的得到一个dp。<br>分两种情况考虑。<br>dp[i]不能变成另一种意思那么dp[i]=dp[i-1].<br>dp[i]能够变成另一种意思那么dp[i]=dp[i-1]+dp[i-b.length()].</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a><strong>代码</strong>:</h2><h3 id="查看代码"><a href="#查看代码" class="headerlink" title="查看代码"></a><a href="https://github.com/DBwater/acm_solve/blob/master/hdu5763.cpp" target="_blank" rel="external">查看代码</a></h3><h1 id="B-After-a-Sleepless-Night"><a href="#B-After-a-Sleepless-Night" class="headerlink" title="B.After a Sleepless Night"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5764" target="_blank" rel="external">B.After a Sleepless Night</a></h1><h1 id="题意-1"><a href="#题意-1" class="headerlink" title="题意:"></a><strong>题意</strong>:</h1><h1 id="思路-1"><a href="#思路-1" class="headerlink" title="思路:"></a><strong>思路</strong>:</h1><h1 id="代码-1"><a href="#代码-1" class="headerlink" title="代码:"></a><strong>代码</strong>:</h1><h1 id="C-Bonds"><a href="#C-Bonds" class="headerlink" title="C.Bonds"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5765" target="_blank" rel="external">C.Bonds</a></h1><h1 id="题意-2"><a href="#题意-2" class="headerlink" title="题意:"></a><strong>题意</strong>:</h1><h1 id="思路-2"><a href="#思路-2" class="headerlink" title="思路:"></a><strong>思路</strong>:</h1><h1 id="代码-2"><a href="#代码-2" class="headerlink" title="代码:"></a><strong>代码</strong>:</h1><h1 id="D-Filling"><a href="#D-Filling" class="headerlink" title="D.Filling"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5766" target="_blank" rel="external">D.Filling</a></h1><h1 id="题意-3"><a href="#题意-3" class="headerlink" title="题意:"></a><strong>题意</strong>:</h1><h1 id="思路-3"><a href="#思路-3" class="headerlink" title="思路:"></a><strong>思路</strong>:</h1><h1 id="代码-3"><a href="#代码-3" class="headerlink" title="代码:"></a><strong>代码</strong>:</h1><h1 id="E-Lucky7"><a href="#E-Lucky7" class="headerlink" title="E.Lucky7"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5768" target="_blank" rel="external">E.Lucky7</a></h1><h1 id="题意-4"><a href="#题意-4" class="headerlink" title="题意:"></a><strong>题意</strong>:</h1><p>给出n个a[]和m[]和l,r.求不满足所给的x%mi=ai并且满足x%7=0的数在l,r中有多少个。</p>
+<h1 id="思路-4"><a href="#思路-4" class="headerlink" title="思路:"></a><strong>思路</strong>:</h1><p>根据题意可以看出可以列出同余方程组那么问题就转换成求满足同余数方程组的数有多少个，求同余方程组因为mi都是素数，所以可以用中国剩余定理求出同余方程组的解。然后用容斥定理算出答案，这题和一般的容斥不同的是，所有的容斥都是在x%7=0的条件下的，可以用used表示选中的方程组，但是保证x%7一定选上。</p>
+<h1 id="代码-4"><a href="#代码-4" class="headerlink" title="代码:"></a><strong>代码</strong>:</h1><h3 id="查看代码-1"><a href="#查看代码-1" class="headerlink" title="查看代码"></a><a href="https://github.com/DBwater/acm_solve/blob/master/hdu5768.cpp" target="_blank" rel="external">查看代码</a></h3><h1 id="F-Substring"><a href="#F-Substring" class="headerlink" title="F.Substring"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5769" target="_blank" rel="external">F.Substring</a></h1><h1 id="题意-5"><a href="#题意-5" class="headerlink" title="题意:"></a><strong>题意</strong>:</h1><p>给一个字符c和一个字符串s求所有含有C的s的不同的子串。</p>
+<h1 id="思路-5"><a href="#思路-5" class="headerlink" title="思路:"></a><strong>思路</strong>:</h1><p>首先求不同的子串可以想到的就是后缀数组，处理出后缀数组中的sa[]数组和height[]数组。在不考虑包含字符X的情况下，不同子串的个数为sigm(len-(sa[i]+height[i]))[1=&lt;i&lt;=len].如果要求字符X，只需要记录距离sa[i]最近的字符X的位置(a[i])即可，个数为sigm(len-max(a[sa[i]],sa[i]+height[i]))[1&lt;=i&lt;=len].</p>
+<h1 id="代码-5"><a href="#代码-5" class="headerlink" title="代码:"></a><strong>代码</strong>:</h1><h3 id="查看代码-2"><a href="#查看代码-2" class="headerlink" title="查看代码"></a><a href="https://github.com/DBwater/acm_solve/blob/master/hdu5769.cpp" target="_blank" rel="external">查看代码</a></h3><h1 id="G-Treasure"><a href="#G-Treasure" class="headerlink" title="G.Treasure"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5770" target="_blank" rel="external">G.Treasure</a></h1><h1 id="题意-6"><a href="#题意-6" class="headerlink" title="题意:"></a><strong>题意</strong>:</h1><h1 id="思路-6"><a href="#思路-6" class="headerlink" title="思路:"></a><strong>思路</strong>:</h1><h1 id="代码-6"><a href="#代码-6" class="headerlink" title="代码:"></a><strong>代码</strong>:</h1><h1 id="H-Turn-Game"><a href="#H-Turn-Game" class="headerlink" title="H.Turn Game"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5771" target="_blank" rel="external">H.Turn Game</a></h1><h1 id="题意-7"><a href="#题意-7" class="headerlink" title="题意:"></a><strong>题意</strong>:</h1><h1 id="思路-7"><a href="#思路-7" class="headerlink" title="思路:"></a><strong>思路</strong>:</h1><h1 id="代码-7"><a href="#代码-7" class="headerlink" title="代码:"></a><strong>代码</strong>:</h1><h1 id="I-String-problem"><a href="#I-String-problem" class="headerlink" title="I.String problem"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5772" target="_blank" rel="external">I.String problem</a></h1><h1 id="题意-8"><a href="#题意-8" class="headerlink" title="题意:"></a><strong>题意</strong>:</h1><h1 id="思路-8"><a href="#思路-8" class="headerlink" title="思路:"></a><strong>思路</strong>:</h1><h1 id="代码-8"><a href="#代码-8" class="headerlink" title="代码:"></a><strong>代码</strong>:</h1><h1 id="J-The-All-purpose-Zero"><a href="#J-The-All-purpose-Zero" class="headerlink" title="J.The All-purpose Zero"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5773" target="_blank" rel="external">J.The All-purpose Zero</a></h1><h1 id="题意-9"><a href="#题意-9" class="headerlink" title="题意:"></a><strong>题意</strong>:</h1><p>给定n个数ai.其中0可以变成任何你想变的数，问上升子序列最长是多少。</p>
+<h1 id="思路-9"><a href="#思路-9" class="headerlink" title="思路:"></a><strong>思路</strong>:</h1><p>因为0可以变成任何数所以显然充分运用0才能使结果最大。那么我们可以把每个非0的ai减去前面0的个数，然这样保证0一定能被充分用到，然后求出减之前非0的ai最大上升子序列，最后把0的数量加上去就是结果。</p>
+<h1 id="代码-9"><a href="#代码-9" class="headerlink" title="代码:"></a><strong>代码</strong>:</h1><h3 id="查看代码-3"><a href="#查看代码-3" class="headerlink" title="查看代码"></a><a href="https://github.com/DBwater/acm_solve/blob/master/hdu5773.cpp" target="_blank" rel="external">查看代码</a></h3><h1 id="K-Where-Amazing-Happens"><a href="#K-Where-Amazing-Happens" class="headerlink" title="K.Where Amazing Happens"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5774" target="_blank" rel="external">K.Where Amazing Happens</a></h1><h1 id="题意-10"><a href="#题意-10" class="headerlink" title="题意:"></a><strong>题意</strong>:</h1><h1 id="思路-10"><a href="#思路-10" class="headerlink" title="思路:"></a><strong>思路</strong>:</h1><h1 id="代码-10"><a href="#代码-10" class="headerlink" title="代码:"></a><strong>代码</strong>:</h1><h1 id="L-Bubble-Sort"><a href="#L-Bubble-Sort" class="headerlink" title="L.Bubble Sort"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5775" target="_blank" rel="external">L.Bubble Sort</a></h1><h1 id="题意-11"><a href="#题意-11" class="headerlink" title="题意:"></a><strong>题意</strong>:</h1><h1 id="思路-11"><a href="#思路-11" class="headerlink" title="思路:"></a><strong>思路</strong>:</h1><h1 id="代码-11"><a href="#代码-11" class="headerlink" title="代码:"></a><strong>代码</strong>:</h1>
+      
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/08/02/2016multi4/">2016 Multi-University Training Contest4题解</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 John Doe 的个人博客">John Doe</a></p>
+        <p><span>发布时间:</span>2016年08月02日 - 00时08分</p>
+        <p><span>最后更新:</span>2017年07月09日 - 15时09分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/08/02/2016multi4/" title="2016 Multi-University Training Contest4题解">http://yoursite.com/2016/08/02/2016multi4/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/08/02/2016multi4/　　作者: John Doe" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2016/08/26/dfsx/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          dfs序总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/25/liantong/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">连通二分图计数</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#A-Another-Meaning"><span class="toc-number">1.</span> <span class="toc-text">A.Another Meaning</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#题意"><span class="toc-number">1.1.</span> <span class="toc-text">题意:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思路"><span class="toc-number">1.2.</span> <span class="toc-text">思路:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">1.3.</span> <span class="toc-text">代码:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看代码"><span class="toc-number">1.3.1.</span> <span class="toc-text">查看代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#B-After-a-Sleepless-Night"><span class="toc-number">2.</span> <span class="toc-text">B.After a Sleepless Night</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#题意-1"><span class="toc-number">3.</span> <span class="toc-text">题意:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路-1"><span class="toc-number">4.</span> <span class="toc-text">思路:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码-1"><span class="toc-number">5.</span> <span class="toc-text">代码:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#C-Bonds"><span class="toc-number">6.</span> <span class="toc-text">C.Bonds</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#题意-2"><span class="toc-number">7.</span> <span class="toc-text">题意:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路-2"><span class="toc-number">8.</span> <span class="toc-text">思路:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码-2"><span class="toc-number">9.</span> <span class="toc-text">代码:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#D-Filling"><span class="toc-number">10.</span> <span class="toc-text">D.Filling</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#题意-3"><span class="toc-number">11.</span> <span class="toc-text">题意:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路-3"><span class="toc-number">12.</span> <span class="toc-text">思路:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码-3"><span class="toc-number">13.</span> <span class="toc-text">代码:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#E-Lucky7"><span class="toc-number">14.</span> <span class="toc-text">E.Lucky7</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#题意-4"><span class="toc-number">15.</span> <span class="toc-text">题意:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路-4"><span class="toc-number">16.</span> <span class="toc-text">思路:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码-4"><span class="toc-number">17.</span> <span class="toc-text">代码:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看代码-1"><span class="toc-number">17.0.1.</span> <span class="toc-text">查看代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#F-Substring"><span class="toc-number">18.</span> <span class="toc-text">F.Substring</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#题意-5"><span class="toc-number">19.</span> <span class="toc-text">题意:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路-5"><span class="toc-number">20.</span> <span class="toc-text">思路:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码-5"><span class="toc-number">21.</span> <span class="toc-text">代码:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看代码-2"><span class="toc-number">21.0.1.</span> <span class="toc-text">查看代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#G-Treasure"><span class="toc-number">22.</span> <span class="toc-text">G.Treasure</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#题意-6"><span class="toc-number">23.</span> <span class="toc-text">题意:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路-6"><span class="toc-number">24.</span> <span class="toc-text">思路:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码-6"><span class="toc-number">25.</span> <span class="toc-text">代码:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#H-Turn-Game"><span class="toc-number">26.</span> <span class="toc-text">H.Turn Game</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#题意-7"><span class="toc-number">27.</span> <span class="toc-text">题意:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路-7"><span class="toc-number">28.</span> <span class="toc-text">思路:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码-7"><span class="toc-number">29.</span> <span class="toc-text">代码:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#I-String-problem"><span class="toc-number">30.</span> <span class="toc-text">I.String problem</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#题意-8"><span class="toc-number">31.</span> <span class="toc-text">题意:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路-8"><span class="toc-number">32.</span> <span class="toc-text">思路:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码-8"><span class="toc-number">33.</span> <span class="toc-text">代码:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#J-The-All-purpose-Zero"><span class="toc-number">34.</span> <span class="toc-text">J.The All-purpose Zero</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#题意-9"><span class="toc-number">35.</span> <span class="toc-text">题意:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路-9"><span class="toc-number">36.</span> <span class="toc-text">思路:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码-9"><span class="toc-number">37.</span> <span class="toc-text">代码:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查看代码-3"><span class="toc-number">37.0.1.</span> <span class="toc-text">查看代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#K-Where-Amazing-Happens"><span class="toc-number">38.</span> <span class="toc-text">K.Where Amazing Happens</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#题意-10"><span class="toc-number">39.</span> <span class="toc-text">题意:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路-10"><span class="toc-number">40.</span> <span class="toc-text">思路:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码-10"><span class="toc-number">41.</span> <span class="toc-text">代码:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#L-Bubble-Sort"><span class="toc-number">42.</span> <span class="toc-text">L.Bubble Sort</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#题意-11"><span class="toc-number">43.</span> <span class="toc-text">题意:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路-11"><span class="toc-number">44.</span> <span class="toc-text">思路:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码-11"><span class="toc-number">45.</span> <span class="toc-text">代码:</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/08/02/2016multi4/" data-title="2016 Multi-University Training Contest4题解" data-url="http://yoursite.com/2016/08/02/2016multi4/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/08/26/dfsx/" title="上一篇: dfs序总结">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/07/25/liantong/" title="下一篇: 连通二分图计数">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/10/31/ubuntu/">ubutn上常用软件的配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/30/python-vim/">用vim打造py开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/19/regex1/">正则表达式引擎的构建（1）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/18/bash/">lunix命令行学习第一篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/09/wangluoliu/">网络流24题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/26/dfsx/">dfs序总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/02/2016multi4/">2016 Multi-University Training Contest4题解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/25/liantong/">连通二分图计数</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/22/2016multi/">2016 Multi-University Training Contest 1题解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/19/hello/">无聊的吐槽</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 John Doe
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
