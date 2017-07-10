@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>设计模式 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="关于对设计模式的一些理解">
+<meta name="keywords" content="设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式">
+<meta property="og:url" content="/2017/06/25/设计模式/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="关于对设计模式的一些理解">
+<meta property="og:updated_time" content="2017-07-09T07:38:43.652Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="设计模式">
+<meta name="twitter:description" content="关于对设计模式的一些理解">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/http://7xkyoa.com1.z0.glb.clouddn.com/%E8%B7%AF%E9%A3%9E.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">DBwater</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/archives">博客首页</a></li>
+                        
+                            <li><a href="/tags/随笔">随笔</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/DBwater" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://www.zhihu.com/people/huang-meng-wei-80" title="zhihu">zhihu</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/ACM/" style="font-size: 15px;">ACM</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/acm/" style="font-size: 20px;">acm</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/编译原理/" style="font-size: 10px;">编译原理</a> <a href="/tags/网络流/" style="font-size: 10px;">网络流</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://lyeec.me">Lyeec</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://kingofprank.com">kingofprank</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">弱者为何而战，为尊严，为荣誉，为了证明自己不是弱者</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">DBwater</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/http://7xkyoa.com1.z0.glb.clouddn.com/%E8%B7%AF%E9%A3%9E.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">DBwater</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives">博客首页</a></li>
+                
+                    <li><a href="/tags/随笔">随笔</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/DBwater" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/huang-meng-wei-80" title="zhihu">zhihu</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/25/设计模式/" class="article-date">
+      <time datetime="2017-06-25T04:15:46.000Z" itemprop="datePublished">2017-06-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      设计模式
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>关于对设计模式的一些理解<br><a id="more"></a>    </p>
+<h2 id="设计模式的６大原则"><a href="#设计模式的６大原则" class="headerlink" title="设计模式的６大原则"></a>设计模式的６大原则</h2><h3 id="开闭原则"><a href="#开闭原则" class="headerlink" title="开闭原则"></a>开闭原则</h3><ol>
+<li><p>概念：</p>
+<p> 一个软件实体如类、模块和函数应该对扩展开放，对修改关闭。模块应尽量在不修改原代码的情况下进行扩展。</p>
+</li>
+<li><p>模拟场景：</p>
+<p> 在软件的生命周期内，因为变化、升级和维护等原因需要对软件原有代码进行修改时，可能会给旧代码中引入错误，也可能会使我们不得不对整个功能进行重构，并且需要原有代码经过重新测试。</p>
+</li>
+<li><p>Solution：</p>
+<p> 当软件需要变化时，尽量通过扩展软件实体的行为来实现变化，而不是通过修改已有的代码来实现变化。</p>
+</li>
+<li>注意事项：<ul>
+<li>通过接口或者抽象类约束扩展，对扩展进行边界限定，不允许出现在接口或抽象类中不存在的public方法</li>
+<li>参数类型、引用对象尽量使用接口或者抽象类，而不是实现类</li>
+<li>抽象层尽量保持稳定，一旦确定即不允许修改</li>
+</ul>
+</li>
+<li>开闭原则的优点：<ul>
+<li>可复用性</li>
+<li>可维护性</li>
+</ul>
+</li>
+</ol>
+<h3 id="里氏代换原则"><a href="#里氏代换原则" class="headerlink" title="里氏代换原则"></a>里氏代换原则</h3><ol>
+<li><p>概述： 派生类(子类)对象能够替换其基类(父类)对象被调用</p>
+</li>
+<li><p>概念：</p>
+<p> 里氏代换原则(Liskov Substitution Principle LSP)面向对象设计的基本原则之一。 里氏代换原则中说，任何基类可以出现的地方，子类一定可以出现。 LSP是继承复用的基石，只有当衍生类可以替换掉基类，软件单位的功能不受到影响时，基类才能真正被复用，而衍生类也能够在基类的基础上增加新的行为。里氏代换原则是对“开-闭”原则的补充。实现“开-闭”原则的关键步骤就是抽象化。而基类与子类的继承关系就是抽象化的具体实现，所以里氏代换原则是对实现抽象化的具体步骤的规范。(源自百度百科)</p>
+</li>
+<li><p>子类为什么可以替换父类的位置？： </p>
+<p> 当满足继承的时候，父类肯定存在非私有成员，子类肯定是得到了父类的这些非私有成员（假设，父类的的成员全部是私有的，那么子类没办法从父类继承任何成员，也就不存在继承的概念了）。既然子类继承了父类的这些非私有成员，那么父类对象也就可以在子类对象中调用这些非私有成员。所以，子类对象可以替换父类对象的位置。</p>
+</li>
+<li><p>里氏代换原则优点：</p>
+<p> 需求变化时，只须继承，而别的东西不会改变。由于里氏代换原则才使得开放封闭成为可能。这样使得子类在父类无需修改的话就可以扩展。</p>
+</li>
+</ol>
+<h3 id="依赖倒转原则"><a href="#依赖倒转原则" class="headerlink" title="依赖倒转原则"></a>依赖倒转原则</h3><ol>
+<li><p>概念：</p>
+<p> 依赖倒置原则（Dependence Inversion Principle）是程序要依赖于抽象接口，不要依赖于具体实现。简单的说就是要求对抽象进行编程，不要对实现进行编程，这样就降低了客户与实现模块间的耦合。</p>
+</li>
+<li><p>依赖倒转原则用处：</p>
+<p> 有些时候为了代码复用，一般会把常用的代码写成函数或类库。这样开发新项目时，直接用就行了。比如做项目时大多要访问数据库，所以我们就把访问数据库的代码写成了函数。每次做项目去调用这些函数。那么我们的问题来了。我们要做新项目时，发现业务逻辑的高层模块都是一样的，但客户却希望使用不同的数据库或存储住处方式，这时就出现麻烦了。我们希望能再次利用这些高层模块，但高层模块都是与低层的访问数据库绑定在一起，没办法复用这些高层模块。所以不管是高层模块和低层模块都应该依赖于抽象，具体一点就是接口或抽象类，只要接口是稳定的，那么任何一个更改都不用担心了。</p>
+</li>
+<li>注意事项：<ul>
+<li>高层模块不应该依赖低层模块。两个都应该依赖抽象。</li>
+<li>抽象不应该依赖结节。细节应该依赖抽象。</li>
+</ul>
+</li>
+</ol>
+<h3 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h3><ol>
+<li><p>概念：</p>
+<p> 客户端不应该依赖它不需要的接口，类间的依赖关系应该建立在最小的接口上。</p>
+</li>
+<li><p>含义：</p>
+<p> 接口隔离原则的核心定义，不出现臃肿的接口（Fat Interface），但是“小”是有限度的，首先就是不能违反单一职责原则。</p>
+</li>
+<li><p>模拟场景：</p>
+<p> 一个OA系统，外部只负责提交和撤回工作流，内部负责审核和驳回工作流。</p>
+</li>
+</ol>
+<h3 id="合成-聚合复用原则"><a href="#合成-聚合复用原则" class="headerlink" title="合成/聚合复用原则"></a>合成/聚合复用原则</h3><ol>
+<li><p>概念：</p>
+<p> 合成/聚合复用原则（Composite/Aggregate Reuse Principle，CARP）经常又叫做合成复用原则。合成/聚合复用原则就是在一个新的对象里面使用一些已有的对象，使之成为新对象的一部分；新的对象通过向这些对象的委派达到复用已有功能的目的。它的设计原则是：要尽量使用合成/聚合，尽量不要使用继承。</p>
+</li>
+<li><p>合成/聚合解析：</p>
+<ul>
+<li><p>聚合概念：</p>
+<p>  聚合用来表示“拥有”关系或者整体与部分的关系。代表部分的对象有可能会被多个代表整体的对象所共享，而且不一定会随着某个代表整体的对象被销毁或破坏而被销毁或破坏，部分的生命周期可以超越整体。例如，Iphone5和IOS，当Iphone5删除后，IOS还能存在，IOS可以被Iphone6引用。</p>
+</li>
+<li><p>合成概念：</p>
+<p>  合成用来表示一种强得多的“拥有”关系。在一个合成关系里，部分和整体的生命周期是一样的。一个合成的新对象完全拥有对其组成部分的支配权，包括它们的创建和湮灭等。使用程序语言的术语来说，合成而成的新对象对组成部分的内存分配、内存释放有绝对的责任。一个合成关系中的成分对象是不能与另一个合成关系共享的。一个成分对象在同一个时间内只能属于一个合成关系。如果一个合成关系湮灭了，那么所有的成分对象要么自己湮灭所有的成分对象（这种情况较为普遍）要么就得将这一责任交给别人（较为罕见）。例如：水和鱼的关系，当水没了，鱼也不可能独立存在。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="最小知识原则（也叫迪米特法则）"><a href="#最小知识原则（也叫迪米特法则）" class="headerlink" title="最小知识原则（也叫迪米特法则）"></a>最小知识原则（也叫迪米特法则）</h3><ol>
+<li><p>概念：</p>
+<p> 一个软件实体应当尽可能少的与其他实体发生相互作用。每一个软件单位对其他的单位都只有最少的知识，而且局限于那些与本单位密切相关的软件单位。迪米特法则的初衷在于降低类之间的耦合。由于每个类尽量减少对其他类的依赖，因此，很容易使得系统的功能模块功能独立，相互之间不存在（或很少有）依赖关系。迪米特法则不希望类之间建立直接的联系。如果真的有需要建立联系，也希望能通过它的友元类来转达。因此，应用迪米特法则有可能造成的一个后果就是：系统中存在大量的中介类，这些类之所以存在完全是为了传递类之间的相互调用关系——这在一定程度上增加了系统的复杂度。</p>
+</li>
+<li><p>模拟场景：</p>
+<p> 场景：公司财务总监发出指令，让财务部门的人去统计公司已发公司的人数。</p>
+</li>
+</ol>
+<h2 id="创建型模型"><a href="#创建型模型" class="headerlink" title="创建型模型"></a>创建型模型</h2><h3 id="抽象工厂（Abstract-Factory）"><a href="#抽象工厂（Abstract-Factory）" class="headerlink" title="抽象工厂（Abstract Factory）"></a>抽象工厂（Abstract Factory）</h3><h3 id="工厂方法-Factory-Method"><a href="#工厂方法-Factory-Method" class="headerlink" title="工厂方法 (Factory Method)"></a>工厂方法 (Factory Method)</h3><h3 id="生成器-Builder"><a href="#生成器-Builder" class="headerlink" title="生成器 (Builder)"></a>生成器 (Builder)</h3><h3 id="原型-Prototype"><a href="#原型-Prototype" class="headerlink" title="原型 (Prototype)"></a>原型 (Prototype)</h3><h3 id="单件-singleton"><a href="#单件-singleton" class="headerlink" title="单件 (singleton)"></a>单件 (singleton)</h3><h2 id="结构型模型"><a href="#结构型模型" class="headerlink" title="结构型模型"></a>结构型模型</h2><h3 id="适配器-Adapter"><a href="#适配器-Adapter" class="headerlink" title="适配器 (Adapter)"></a>适配器 (Adapter)</h3><h3 id="桥接-Bridge"><a href="#桥接-Bridge" class="headerlink" title="桥接 (Bridge)"></a>桥接 (Bridge)</h3><h3 id="组成-Composite"><a href="#组成-Composite" class="headerlink" title="组成 (Composite)"></a>组成 (Composite)</h3><h3 id="装饰-Decotator"><a href="#装饰-Decotator" class="headerlink" title="装饰 (Decotator)"></a>装饰 (Decotator)</h3><h3 id="外观-Facade"><a href="#外观-Facade" class="headerlink" title="外观 (Facade)"></a>外观 (Facade)</h3><h3 id="享元-Flyweight"><a href="#享元-Flyweight" class="headerlink" title="享元 (Flyweight)"></a>享元 (Flyweight)</h3><h3 id="代理-proxy"><a href="#代理-proxy" class="headerlink" title="代理 (proxy)"></a>代理 (proxy)</h3><h2 id="行为性模型-Chain-Of-Responsibil-Ity"><a href="#行为性模型-Chain-Of-Responsibil-Ity" class="headerlink" title="行为性模型 (Chain Of Responsibil Ity)"></a>行为性模型 (Chain Of Responsibil Ity)</h2><h3 id="责任链-Command"><a href="#责任链-Command" class="headerlink" title="责任链 (Command)"></a>责任链 (Command)</h3><h3 id="解释器-Interp"><a href="#解释器-Interp" class="headerlink" title="解释器 (Interp)"></a>解释器 (Interp)</h3><h3 id="迭代器-j"><a href="#迭代器-j" class="headerlink" title="迭代器 (j)"></a>迭代器 (j)</h3><h3 id="中介者"><a href="#中介者" class="headerlink" title="中介者 ()"></a>中介者 ()</h3><h3 id="备忘录忘录"><a href="#备忘录忘录" class="headerlink" title="备忘录忘录 ()"></a>备忘录忘录 ()</h3><h3 id="观察者"><a href="#观察者" class="headerlink" title="观察者 ()"></a>观察者 ()</h3><h3 id="状态"><a href="#状态" class="headerlink" title="状态 ()"></a>状态 ()</h3><h3 id="策略"><a href="#策略" class="headerlink" title="策略 ()"></a>策略 ()</h3><h3 id="模块方法"><a href="#模块方法" class="headerlink" title="模块方法 ()"></a>模块方法 ()</h3><h3 id="访问者"><a href="#访问者" class="headerlink" title="访问者 ()"></a>访问者 ()</h3>
+      
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/06/25/设计模式/">设计模式</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 DBwater 的个人博客">DBwater</a></p>
+        <p><span>发布时间:</span>2017年06月25日 - 12时15分</p>
+        <p><span>最后更新:</span>2017年07月09日 - 15时38分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/06/25/设计模式/" title="设计模式">/2017/06/25/设计模式/</a>
+            <span class="copy-path" data-clipboard-text="原文: /2017/06/25/设计模式/　　作者: DBwater" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2017/06/25/linux文本处理/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          linux文本处理的常用的命令
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/31/ubuntu/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ubutn上常用软件的配置</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#设计模式的６大原则"><span class="toc-number">1.</span> <span class="toc-text">设计模式的６大原则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#开闭原则"><span class="toc-number">1.1.</span> <span class="toc-text">开闭原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#里氏代换原则"><span class="toc-number">1.2.</span> <span class="toc-text">里氏代换原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#依赖倒转原则"><span class="toc-number">1.3.</span> <span class="toc-text">依赖倒转原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#接口隔离原则"><span class="toc-number">1.4.</span> <span class="toc-text">接口隔离原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合成-聚合复用原则"><span class="toc-number">1.5.</span> <span class="toc-text">合成/聚合复用原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最小知识原则（也叫迪米特法则）"><span class="toc-number">1.6.</span> <span class="toc-text">最小知识原则（也叫迪米特法则）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建型模型"><span class="toc-number">2.</span> <span class="toc-text">创建型模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#抽象工厂（Abstract-Factory）"><span class="toc-number">2.1.</span> <span class="toc-text">抽象工厂（Abstract Factory）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工厂方法-Factory-Method"><span class="toc-number">2.2.</span> <span class="toc-text">工厂方法 (Factory Method)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成器-Builder"><span class="toc-number">2.3.</span> <span class="toc-text">生成器 (Builder)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原型-Prototype"><span class="toc-number">2.4.</span> <span class="toc-text">原型 (Prototype)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单件-singleton"><span class="toc-number">2.5.</span> <span class="toc-text">单件 (singleton)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结构型模型"><span class="toc-number">3.</span> <span class="toc-text">结构型模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#适配器-Adapter"><span class="toc-number">3.1.</span> <span class="toc-text">适配器 (Adapter)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#桥接-Bridge"><span class="toc-number">3.2.</span> <span class="toc-text">桥接 (Bridge)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组成-Composite"><span class="toc-number">3.3.</span> <span class="toc-text">组成 (Composite)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#装饰-Decotator"><span class="toc-number">3.4.</span> <span class="toc-text">装饰 (Decotator)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#外观-Facade"><span class="toc-number">3.5.</span> <span class="toc-text">外观 (Facade)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#享元-Flyweight"><span class="toc-number">3.6.</span> <span class="toc-text">享元 (Flyweight)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代理-proxy"><span class="toc-number">3.7.</span> <span class="toc-text">代理 (proxy)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#行为性模型-Chain-Of-Responsibil-Ity"><span class="toc-number">4.</span> <span class="toc-text">行为性模型 (Chain Of Responsibil Ity)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#责任链-Command"><span class="toc-number">4.1.</span> <span class="toc-text">责任链 (Command)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解释器-Interp"><span class="toc-number">4.2.</span> <span class="toc-text">解释器 (Interp)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#迭代器-j"><span class="toc-number">4.3.</span> <span class="toc-text">迭代器 (j)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#中介者"><span class="toc-number">4.4.</span> <span class="toc-text">中介者 ()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#备忘录忘录"><span class="toc-number">4.5.</span> <span class="toc-text">备忘录忘录 ()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#观察者"><span class="toc-number">4.6.</span> <span class="toc-text">观察者 ()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#状态"><span class="toc-number">4.7.</span> <span class="toc-text">状态 ()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#策略"><span class="toc-number">4.8.</span> <span class="toc-text">策略 ()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模块方法"><span class="toc-number">4.9.</span> <span class="toc-text">模块方法 ()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#访问者"><span class="toc-number">4.10.</span> <span class="toc-text">访问者 ()</span></a></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/06/25/设计模式/" data-title="设计模式" data-url="/2017/06/25/设计模式/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/06/25/linux文本处理/" title="上一篇: linux文本处理的常用的命令">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/10/31/ubuntu/" title="下一篇: ubutn上常用软件的配置">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/三种创建设计模式/">三种工厂模式的对比</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/25/linux文本处理/">linux文本处理的常用的命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/25/设计模式/">设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/31/ubuntu/">ubutn上常用软件的配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/30/python-vim/">用vim打造py开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/19/regex1/">正则表达式引擎的构建（1）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/18/bash/">lunix命令行学习第一篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/09/wangluoliu/">网络流24题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/26/dfsx/">dfs序总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/02/2016multi4/">2016 Multi-University Training Contest4题解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/25/liantong/">连通二分图计数</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/22/2016multi/">2016 Multi-University Training Contest 1题解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/19/hello/">无聊的吐槽</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 DBwater
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
