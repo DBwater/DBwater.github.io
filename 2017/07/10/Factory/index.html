@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>三种工厂模式的对比 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="简单工厂模式，工厂方法模式，抽象工厂模式的对比">
+<meta name="keywords" content="设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="三种工厂模式的对比">
+<meta property="og:url" content="/2017/07/10/Factory/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="简单工厂模式，工厂方法模式，抽象工厂模式的对比">
+<meta property="og:image" content="http://osv6l88ww.bkt.clouddn.com/simple_factory.JPG">
+<meta property="og:image" content="http://osv6l88ww.bkt.clouddn.com/factory_method.JPG">
+<meta property="og:image" content="http://osv6l88ww.bkt.clouddn.com/abstract_factory.JPG">
+<meta property="og:updated_time" content="2017-07-10T07:46:28.533Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="三种工厂模式的对比">
+<meta name="twitter:description" content="简单工厂模式，工厂方法模式，抽象工厂模式的对比">
+<meta name="twitter:image" content="http://osv6l88ww.bkt.clouddn.com/simple_factory.JPG">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/http://7xkyoa.com1.z0.glb.clouddn.com/%E8%B7%AF%E9%A3%9E.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">DBwater</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/archives">博客首页</a></li>
+                        
+                            <li><a href="/tags/随笔">随笔</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/DBwater" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://www.zhihu.com/people/huang-meng-wei-80" title="zhihu">zhihu</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/ACM/" style="font-size: 13.33px;">ACM</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/acm/" style="font-size: 16.67px;">acm</a> <a href="/tags/c/" style="font-size: 13.33px;">c++</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/编译原理/" style="font-size: 10px;">编译原理</a> <a href="/tags/网络流/" style="font-size: 10px;">网络流</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://lyeec.me">Lyeec</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://kingofprank.com">kingofprank</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">弱者为何而战，为尊严，为荣誉，为了证明自己不是弱者</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">DBwater</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/http://7xkyoa.com1.z0.glb.clouddn.com/%E8%B7%AF%E9%A3%9E.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">DBwater</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives">博客首页</a></li>
+                
+                    <li><a href="/tags/随笔">随笔</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/DBwater" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/huang-meng-wei-80" title="zhihu">zhihu</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Factory" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/07/10/Factory/" class="article-date">
+      <time datetime="2017-07-10T07:38:46.000Z" itemprop="datePublished">2017-07-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      三种工厂模式的对比
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>简单工厂模式，工厂方法模式，抽象工厂模式的对比<br><a id="more"></a>    </p>
+<h2 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h2><ol>
+<li><p>介绍：</p>
+<p> 简单工厂模式是由一个工厂对象决定创建出哪一种产品类的实例。简单工厂模式是工厂模式家族中最简单实用的模式，可以理解为是不同工厂模式的一个特殊实现。</p>
+</li>
+<li><p>意图:</p>
+<p> 把一系列拥有共同特征的产品的创建封装</p>
+</li>
+<li><p>UML图:<br><img src="http://osv6l88ww.bkt.clouddn.com/simple_factory.JPG" alt=""></p>
+</li>
+<li><p>简单工厂的优点/缺点：</p>
+<ul>
+<li>优点：工厂类含有必要的判断逻辑，可以决定在什么时候创建哪一个产品类的实例，客户端可以免除直接创建产品对象的责任，而仅仅”消费”产品。</li>
+<li>缺点：对修改不封闭，新增加产品要修改工厂。违法了鼎鼎大名的开闭法则（OCP）。另外，简单工厂模式通常使用静态工厂方法，这使得无法由子类继承，造成工厂角色无法形成基于继承的等级结构。</li>
+</ul>
+</li>
+</ol>
+<p>5.　简单工厂的实现：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="comment">//产品基类（接口）</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">product</span>&#123;</span></div><div class="line"><span class="keyword">protected</span>:</div><div class="line">	product()&#123;&#125;;</div><div class="line"><span class="keyword">public</span>:</div><div class="line"><span class="keyword">virtual</span> ~product()&#123;&#125;;</div><div class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">function</span><span class="params">()</span></span>= <span class="number">0</span>;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//具体产品的创建和实现</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">concrete_productA</span>:</span><span class="keyword">public</span> product&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	concrete_productA()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"create a product A"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</div><div class="line">	~concrete_productA()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">function</span><span class="params">()</span></span>&#123;&#125;</div><div class="line"></div><div class="line">&#125;;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">concrete_productB</span>:</span><span class="keyword">public</span> product&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	concrete_productB()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"create a procduct B"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</div><div class="line">	~concrete_productB()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">function</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//简单工厂</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">simple_factory</span>&#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">	simple_factory()&#123;&#125;</div><div class="line">	~simple_factory()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function">product* <span class="title">create_product</span><span class="params">(<span class="keyword">int</span> type)</span></span>;</div><div class="line">	<span class="function">product* <span class="title">create_productA</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> <span class="keyword">new</span> concrete_productA();&#125;</div><div class="line">	<span class="function">product* <span class="title">create_productB</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> <span class="keyword">new</span> concrete_productB();&#125;</div><div class="line">&#125;;</div><div class="line">product* simple_factory::create_product(<span class="keyword">int</span> type)&#123;</div><div class="line">	product *p =<span class="literal">nullptr</span>;</div><div class="line">	<span class="keyword">switch</span>(type)&#123;</div><div class="line">		<span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">			p = <span class="keyword">new</span> concrete_productA();</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">			p = <span class="keyword">new</span> concrete_productB();</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">default</span>:</div><div class="line">			p = <span class="keyword">new</span> concrete_productA();</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> p;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	simple_factory factory;</div><div class="line">	product *p1 = factory.create_product(<span class="number">0</span>);</div><div class="line">	product *p2 = factory.create_product(<span class="number">1</span>);</div><div class="line">	<span class="keyword">delete</span> p1;</div><div class="line">	<span class="keyword">delete</span> p2;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h2><ol>
+<li><p>介绍：</p>
+<p> 工厂方法模式(Factory Method)，又称多态性工厂模式。在工厂方法模式中，核心的工厂类不再负责所有的产品的创建，而是将具体创建的工作交给子类去做。该核心类成为一个抽象工厂角色，仅负责给出具体工厂子类必须实现的接口，而不接触哪一个产品类应当被实例化这种细节。</p>
+</li>
+<li><p>意图:</p>
+<p> 定义一个用户创建对象的接口，让子类决定实例化哪一个类。Factory Method使一个类的实例化延迟到其子类。</p>
+</li>
+<li><p>UML图:<br><img src="http://osv6l88ww.bkt.clouddn.com/factory_method.JPG" alt=""></p>
+</li>
+<li><p>工厂方法的优缺点：</p>
+<ul>
+<li>优点：<br>简单工厂具有的优点。<br>解决了简单工厂的修改不能关闭的问题。系统新增产品，新增一个产品工厂即可，对抽象工厂不受影响。</li>
+<li>缺点：<br>对于创建不同系列的产品无能为力。</li>
+</ul>
+</li>
+<li><p>工厂模式的实现</p>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="comment">//产品基类(接口)</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">product</span>&#123;</span></div><div class="line"><span class="keyword">protected</span>:</div><div class="line">	product()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="keyword">virtual</span> ~product()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">function</span><span class="params">()</span></span>=<span class="number">0</span>;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//产品实际构造</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">concrete_productA</span>:</span><span class="keyword">public</span> product&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	concrete_productA()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"create a product A"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</div><div class="line">	~concrete_productA()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">function</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">concrete_productB</span>:</span><span class="keyword">public</span> product&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	concrete_productB()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"create a product B"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</div><div class="line">	~concrete_productB()&#123;&#125;</div><div class="line"><span class="keyword">public</span>: </div><div class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">functisahnon</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//新增加的产品Ｃ和Ｄ</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">concrete_productC</span>:</span><span class="keyword">public</span> product&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	concrete_productC()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"create a product C"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</div><div class="line">	~concrete_productC()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">function</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">concrete_productD</span>:</span><span class="keyword">public</span> product&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	concrete_productD()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"create a product D"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</div><div class="line">	~concrete_productD()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">function</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//工厂基类（接口）</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">factory</span>&#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">	factory()&#123;&#125;</div><div class="line">	<span class="keyword">virtual</span> ~factory()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">virtual</span> product* <span class="title">create_product</span><span class="params">(<span class="keyword">int</span> type)</span></span>=<span class="number">0</span>;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//曾经的工厂</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">concrete_factory1</span>:</span><span class="keyword">public</span> factory&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	concrete_factory1()&#123;&#125;</div><div class="line">	<span class="keyword">virtual</span> ~concrete_factory1()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function">product *<span class="title">create_product</span><span class="params">(<span class="keyword">int</span> type)</span></span>;</div><div class="line">&#125;;</div><div class="line">product* concrete_factory1::create_product(<span class="keyword">int</span> type)</div><div class="line">&#123;</div><div class="line">	product* p =<span class="literal">nullptr</span>;</div><div class="line">	<span class="keyword">switch</span>(type)&#123;</div><div class="line">		<span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">			p = <span class="keyword">new</span> concrete_productA();</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">			p = <span class="keyword">new</span> concrete_productB();</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">default</span>:</div><div class="line">			p = <span class="keyword">new</span> concrete_productA();</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> p;</div><div class="line">			</div><div class="line">&#125;</div><div class="line"><span class="comment">//增加新的产品所构建的工厂，产生Ｃ和Ｄ产品</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">concrete_factory2</span>:</span><span class="keyword">public</span> factory&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	concrete_factory2()&#123;&#125;</div><div class="line">	<span class="keyword">virtual</span> ~concrete_factory2()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function">product *<span class="title">create_product</span><span class="params">(<span class="keyword">int</span> type)</span></span>;</div><div class="line">&#125;;</div><div class="line">product * concrete_factory2::create_product(<span class="keyword">int</span> type)<span class="comment">//０生产ｃ，１生产Ｄ</span></div><div class="line">&#123;</div><div class="line">	product *p = <span class="literal">nullptr</span>;</div><div class="line">	<span class="keyword">switch</span>(type)&#123;</div><div class="line">		<span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">			p = <span class="keyword">new</span> concrete_productC();</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">			p = <span class="keyword">new</span> concrete_productD();</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">default</span>:</div><div class="line">			p = <span class="keyword">new</span> concrete_productC();</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">	&#125;	</div><div class="line">	<span class="keyword">return</span> p;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	factory *f1 = <span class="keyword">new</span> concrete_factory1();</div><div class="line">	product *f1a = f1-&gt;create_product(<span class="number">0</span>);</div><div class="line">	product *f1b = f1-&gt;create_product(<span class="number">1</span>);</div><div class="line">	factory *f2 = <span class="keyword">new</span> concrete_factory2();</div><div class="line">	product *f2c = f2-&gt;create_product(<span class="number">0</span>);</div><div class="line">	product *f2d = f2-&gt;create_product(<span class="number">1</span>);</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h2><ol>
+<li><p>介绍：</p>
+<p> 抽象工厂模式是所有形态的工厂模式中最为抽象和最具一般性的一种形态。抽象工厂模式是指当有多个抽象角色时，使用的一种工厂模式。抽象工厂模式可以向客户端提供一个接口，使客户端在不必指定产品的具体的情况下，创建多个产品族中的产品对象。根据里氏替换原则，任何接受父类型的地方，都应当能够接受子类型。因此，实际上系统所需要的，仅仅是类型与这些抽象产品角色相同的一些实例，而不是这些抽象产品的实例。换言之，也就是这些抽象产品的具体子类的实例。工厂类负责创建抽象产品的具体子类的实例。</p>
+</li>
+<li><p>意图</p>
+<p> 提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类。</p>
+</li>
+<li>UML图:<br><img src="http://osv6l88ww.bkt.clouddn.com/abstract_factory.JPG" alt=""><br>4.抽象工厂的优缺点<ul>
+<li>优点：<br>抽象工厂模式隔离了具体类的生产，使得客户并不需要知道什么被创建。<br>当一个产品族中的多个对象被设计成一起工作时，它能保证客户端始终只使用同一个产品族中的对象。<br>增加新的具体工厂和产品族很方便，无须修改已有系统，符合“开闭原则”。</li>
+<li>缺点：<br>难以支持新种类的产品。难以扩展抽象工厂以生产新种类的产品。这是因为抽象工厂几口确定了可以被创建的产品集合，支持新种类的产品就需要扩展该工厂接口，这将涉及抽象工厂类及其所有子类的改变。</li>
+</ul>
+</li>
+<li>应用场景<ul>
+<li>支持多种观感标准的用户界面工具箱（Kit）。</li>
+<li>游戏开发中的多风格系列场景，比如道路，房屋，管道等。</li>
+</ul>
+</li>
+</ol>
+<p>6.　抽象工厂方法的实现:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="comment">//抽象的产品类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">product</span>&#123;</span></div><div class="line"><span class="keyword">protected</span>:</div><div class="line">	product()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="keyword">virtual</span> ~product()&#123;&#125;</div><div class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">function</span><span class="params">()</span></span>=<span class="number">0</span>;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//真实的构造基本的A产品</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">concrete_productA</span>:</span><span class="keyword">public</span> product&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	concrete_productA()&#123;&#125;</div><div class="line">	<span class="keyword">virtual</span> ~concrete_productA()&#123;&#125;;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">function</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//根据1工厂扩展实现A1产品</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">concrete_productA1</span>:</span><span class="keyword">public</span> concrete_productA&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	concrete_productA1()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"create a product A1"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</div><div class="line">	<span class="keyword">virtual</span> ~concrete_productA1()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">function</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//根据2工厂扩展实现A2产品</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">concrete_productA2</span>:</span><span class="keyword">public</span> concrete_productA&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	concrete_productA2()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"create a product A2"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</div><div class="line">	<span class="keyword">virtual</span> ~concrete_productA2()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">function</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//真实的构造基本的B产品</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">concrete_productB</span>:</span><span class="keyword">public</span> product&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	concrete_productB()&#123;&#125;</div><div class="line">	<span class="keyword">virtual</span> ~concrete_productB()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">function</span><span class="params">()</span></span>&#123;&#125;;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//根据工厂1实现具体的B1产品</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">concrete_productB1</span>:</span><span class="keyword">public</span> concrete_productB&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	concrete_productB1()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"create a product B1"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</div><div class="line">	<span class="keyword">virtual</span> ~concrete_productB1()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">function</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//根据工厂2实现具体的B2产品</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">concrete_productB2</span>:</span><span class="keyword">public</span> concrete_productB&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	concrete_productB2()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"create a product B2"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</div><div class="line">	<span class="keyword">virtual</span> ~concrete_productB2()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">function</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//抽象的工厂类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">abstract_factory</span>&#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">	abstract_factory()&#123;&#125;</div><div class="line">	<span class="keyword">virtual</span> ~abstract_factory()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">virtual</span> concrete_productA *<span class="title">create_productA</span><span class="params">()</span></span>=<span class="number">0</span>;</div><div class="line">	<span class="function"><span class="keyword">virtual</span> concrete_productB *<span class="title">create_productB</span><span class="params">()</span></span>=<span class="number">0</span>;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//具体的工厂1的实现</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">concrete_factory1</span>:</span><span class="keyword">public</span> abstract_factory&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	concrete_factory1()&#123;&#125;</div><div class="line">	<span class="keyword">virtual</span> ~concrete_factory1()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">virtual</span> concrete_productA *<span class="title">create_productA</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> <span class="keyword">new</span> concrete_productA1();&#125;</div><div class="line">	<span class="function"><span class="keyword">virtual</span> concrete_productB *<span class="title">create_productB</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> <span class="keyword">new</span> concrete_productB1();&#125;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//具体的工厂2的实现</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">concrete_factory2</span>:</span><span class="keyword">public</span> abstract_factory&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	concrete_factory2()&#123;&#125;</div><div class="line">	<span class="keyword">virtual</span> ~concrete_factory2()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">virtual</span> concrete_productA *<span class="title">create_productA</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> <span class="keyword">new</span> concrete_productA2();&#125;</div><div class="line">	<span class="function"><span class="keyword">virtual</span> concrete_productB *<span class="title">create_productB</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> <span class="keyword">new</span> concrete_productB2();&#125;</div><div class="line">&#125;;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	abstract_factory *absf1 = <span class="keyword">new</span> concrete_factory1();</div><div class="line">	concrete_productA *absfa1 = absf1-&gt;create_productA();</div><div class="line">	concrete_productB *absfb1 = absf1-&gt;create_productB();</div><div class="line">	abstract_factory *absf2 = <span class="keyword">new</span> concrete_factory2();</div><div class="line">	concrete_productA *absfa2 = absf2-&gt;create_productA();</div><div class="line">	concrete_productB *absfb2 = absf2-&gt;create_productB(); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>参考文献：</p>
+
+      
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/07/10/Factory/">三种工厂模式的对比</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 DBwater 的个人博客">DBwater</a></p>
+        <p><span>发布时间:</span>2017年07月10日 - 15时38分</p>
+        <p><span>最后更新:</span>2017年07月10日 - 15时46分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/07/10/Factory/" title="三种工厂模式的对比">/2017/07/10/Factory/</a>
+            <span class="copy-path" data-clipboard-text="原文: /2017/07/10/Factory/　　作者: DBwater" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2017/07/16/Bridge/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          结构型设计模式－桥接模式（Bridge）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/25/design_patterns/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">设计模式</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简单工厂模式"><span class="toc-number">1.</span> <span class="toc-text">简单工厂模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工厂方法模式"><span class="toc-number">2.</span> <span class="toc-text">工厂方法模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象工厂模式"><span class="toc-number">3.</span> <span class="toc-text">抽象工厂模式</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/07/10/Factory/" data-title="三种工厂模式的对比" data-url="/2017/07/10/Factory/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/07/16/Bridge/" title="上一篇: 结构型设计模式－桥接模式（Bridge）">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2017/06/25/design_patterns/" title="下一篇: 设计模式">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/17/Adapter/">结构型设计模式－适配器模式(Adapter)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/16/Bridge/">结构型设计模式－桥接模式（Bridge）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/Factory/">三种工厂模式的对比</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/25/design_patterns/">设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/25/linux文本处理/">linux文本处理的常用的命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/31/ubuntu/">ubutn上常用软件的配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/30/python-vim/">用vim打造py开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/19/regex1/">正则表达式引擎的构建（1）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/18/bash/">lunix命令行学习第一篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/09/wangluoliu/">网络流24题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/26/dfsx/">dfs序总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/02/2016multi4/">2016 Multi-University Training Contest4题解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/25/liantong/">连通二分图计数</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/22/2016multi/">2016 Multi-University Training Contest 1题解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/19/hello/">无聊的吐槽</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 DBwater
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

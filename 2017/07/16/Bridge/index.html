@@ -3,19 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>无聊的吐槽 | Hexo</title>
+  <title>结构型设计模式－桥接模式（Bridge） | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="年轻人就应该利用假期的时间在学校做点事">
-<meta name="keywords" content="随笔">
+  <meta name="description" content="桥接模式的总结和实现">
+<meta name="keywords" content="设计模式,c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="无聊的吐槽">
-<meta property="og:url" content="/2016/07/19/hello/index.html">
+<meta property="og:title" content="结构型设计模式－桥接模式（Bridge）">
+<meta property="og:url" content="/2017/07/16/Bridge/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="年轻人就应该利用假期的时间在学校做点事">
-<meta property="og:updated_time" content="2017-07-09T07:09:52.639Z">
+<meta property="og:description" content="桥接模式的总结和实现">
+<meta property="og:image" content="http://osv6l88ww.bkt.clouddn.com/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F1.x-png">
+<meta property="og:updated_time" content="2017-07-18T08:59:23.926Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="无聊的吐槽">
-<meta name="twitter:description" content="年轻人就应该利用假期的时间在学校做点事">
+<meta name="twitter:title" content="结构型设计模式－桥接模式（Bridge）">
+<meta name="twitter:description" content="桥接模式的总结和实现">
+<meta name="twitter:image" content="http://osv6l88ww.bkt.clouddn.com/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F1.x-png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -203,11 +205,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-hello" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Bridge" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/07/19/hello/" class="article-date">
-      <time datetime="2016-07-18T20:29:48.000Z" itemprop="datePublished">2016-07-19</time>
+      <a href="/2017/07/16/Bridge/" class="article-date">
+      <time datetime="2017-07-16T07:54:03.000Z" itemprop="datePublished">2017-07-16</time>
 </a>
     </div>
   
@@ -220,7 +222,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      无聊的吐槽
+      结构型设计模式－桥接模式（Bridge）
     </h1>
   
 
@@ -231,7 +233,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -241,10 +243,41 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>年轻人就应该利用假期的时间在学校做点事</p>
-<a id="more"></a>
-<p>   博客更新了，鉴于以前的博客写的东西没什么价值于是就一口气删除了重写，把博客主题也稍微改了改，果然死宅还是比较喜欢黑色风格的，今天借轩神的号打了多校，可惜由于自己智障把边只建了单边，愉快的从开头一直wa的结束，果然还是自己太弱了，晚上的cf也是打的异常崩，疼么自己脑残写挂了三题23333，以第二次爆0结束，重新回到绿名，真是喜大普奔，以后博客的题解一般不会把水题放上来了，然后也会写一些自己读过的书，看过电影的感受(其实就是无聊的吐槽QwQ…..)。<br>    假期会把多校的题补上的，虽然不知道有没有机会参加明年的区域赛，不过还是要加油啊。<br>    好吧懒得打字了，就是这样。。。。。。</p>
-
+        <p>桥接模式的总结和实现<br><a id="more"></a></p>
+<ol>
+<li>意图：将抽象化与实现化分离，使得二者可以独立地变化。</li>
+<li><p>适用场景：</p>
+<ul>
+<li>你不希望抽象和他的实现部分之间有一个固定的绑定关系，例如这种情况可能是因为在程序运行的时刻实现部分应该可以被选择或者切换</li>
+<li>类的抽象以及他的实现都应该可以通过生成子类的方法加以扩充。这时Bridge模式使你可以对不同的抽象接口和实现部分进行组合，并分别对他们进行扩充。</li>
+<li>对一个抽象的实现部分的修改应对客户不产生影响，即客户的代码不必重新编译，</li>
+<li>你想对客户完全隐藏抽象的实现部分，在c++中，类的表示在类的接口中是可见的</li>
+<li>你想在多个对象间共享实现（可能使用引用计数），但同时要求客户不知道这一点。</li>
+</ul>
+</li>
+<li><p>UML图：<br><img src="http://osv6l88ww.bkt.clouddn.com/%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F1.x-png" alt=""></p>
+<p> 抽象基类及接口：</p>
+<ul>
+<li>Abstraction::Operation()：定义要实现的操作接口</li>
+<li>AbstractionImplement::Operation()：实现抽象类Abstaction所定义操作的接口，由其具体派生类ConcreteImplemenA、ConcreteImplemenA或者其他派生类实现。</li>
+<li>在Abstraction::Operation()中根据不同的指针多态调用AbstractionImplement::Operation()函数。</li>
+</ul>
+</li>
+<li><p>例子：</p>
+<p> 假设我们要一个图形，那么这个图形的形状可能是圆的也可能是正方形的，这个图形的颜色可能是红色的也可能是绿色的。<br> 那么我们可以把形状当成abstaction,颜色当成AbstractionImplement，如果还有其他的属性，那么我们就可以把他定义为AbstractionImplement2。<br> 具体实现可以看下面的代码</p>
+</li>
+</ol>
+<p>5.　代码实现：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="comment">//AbstractionImplement</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">color</span>&#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">	color()&#123;&#125;</div><div class="line">	~color()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">show_color</span><span class="params">()</span></span>=<span class="number">0</span>;</div><div class="line">&#125;;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">red</span>:</span><span class="keyword">public</span> color&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	red()&#123;&#125;</div><div class="line">	~red()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">show_color</span><span class="params">()</span></span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"red"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">green</span>:</span><span class="keyword">public</span> color&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	green()&#123;&#125;</div><div class="line">	~green()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">show_color</span><span class="params">()</span></span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"green"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//abstaction</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">graph</span>&#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">	graph()&#123;&#125;</div><div class="line">	~graph()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">select_color</span><span class="params">(color *op)</span></span>&#123;<span class="keyword">this</span>-&gt;op = op;&#125;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">show_color</span><span class="params">()</span></span>&#123;op-&gt;show_color();&#125;</div><div class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">show_shape</span><span class="params">()</span></span>&#123;&#125;;</div><div class="line"><span class="keyword">private</span>:</div><div class="line">	color* op;<span class="comment">//这个指针用来控制颜色</span></div><div class="line">&#125;;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">square</span>:</span><span class="keyword">public</span> graph&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	square()&#123;&#125;</div><div class="line">	~square()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">show_shape</span><span class="params">()</span></span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"square"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">circle</span>:</span><span class="keyword">public</span> square&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	circle()&#123;&#125;</div><div class="line">	~circle()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">show_color</span><span class="params">()</span></span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"circle"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;Bri</div><div class="line">	color* c1= <span class="keyword">new</span> red();</div><div class="line">	graph* p1 = <span class="keyword">new</span> square();</div><div class="line">	p1-&gt;select_color(c1);</div><div class="line">	p1-&gt;show_color();</div><div class="line">	p1-&gt;show_shape();</div><div class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">"-----------------------"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">	color *c2 = <span class="keyword">new</span> green();</div><div class="line">	graph* p2 = <span class="keyword">new</span> circle();</div><div class="line">	p2-&gt;select_color(c2);</div><div class="line">	p2-&gt;show_color();</div><div class="line">	p2-&gt;show_shape();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>6.　总结：<br>优点：</p>
+<pre><code>- 将实现抽离出来，再实现抽象，使得对象的具体实现依赖于抽象，满足了依赖倒转原则。
+- 将可以共享的变化部分，抽离出来，减少了代码的重复信息。
+- 对象的具体实现可以更加灵活，可以满足多个因素变化的要求。
+- 桥接模式有时类似于多继承方案，但是多继承方案违背了类的单一职责原则 （即一个类只有一个变化的原因），复用性比较差，而且多继承结构中类的个数非常庞大，桥接模式是比多继承方案更好的解决方法。
+- 桥接模式提高了系统的可扩充性，在两个变化维度中任意扩展一个维度，都不需要修改原有系统。
+缺点：
+- 客户必须知道选择哪一种类型的实现bri
+</code></pre>
       
       
     </div>
@@ -253,13 +286,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/07/19/hello/">无聊的吐槽</a></p>
+        <p><span>本文标题:</span><a href="/2017/07/16/Bridge/">结构型设计模式－桥接模式（Bridge）</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 DBwater 的个人博客">DBwater</a></p>
-        <p><span>发布时间:</span>2016年07月19日 - 04时29分</p>
-        <p><span>最后更新:</span>2017年07月09日 - 15时09分</p>
+        <p><span>发布时间:</span>2017年07月16日 - 15时54分</p>
+        <p><span>最后更新:</span>2017年07月18日 - 16时59分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/07/19/hello/" title="无聊的吐槽">/2016/07/19/hello/</a>
-            <span class="copy-path" data-clipboard-text="原文: /2016/07/19/hello/　　作者: DBwater" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/07/16/Bridge/" title="结构型设计模式－桥接模式（Bridge）">/2017/07/16/Bridge/</a>
+            <span class="copy-path" data-clipboard-text="原文: /2017/07/16/Bridge/　　作者: DBwater" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -272,15 +305,20 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/07/22/2016multi/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/07/17/Adapter/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          2016 Multi-University Training Contest 1题解
+          结构型设计模式－适配器模式(Adapter)
         
       </div>
     </a>
   
+  
+    <a href="/2017/07/10/Factory/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">三种工厂模式的对比</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
@@ -337,7 +375,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/07/19/hello/" data-title="无聊的吐槽" data-url="/2016/07/19/hello/"></div>
+    <div class="ds-thread" data-thread-key="2017/07/16/Bridge/" data-title="结构型设计模式－桥接模式（Bridge）" data-url="/2017/07/16/Bridge/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -360,13 +398,15 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/07/22/2016multi/" title="上一篇: 2016 Multi-University Training Contest 1题解">
+            <a href="/2017/07/17/Adapter/" title="上一篇: 结构型设计模式－适配器模式(Adapter)">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2017/07/10/Factory/" title="下一篇: 三种工厂模式的对比">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
     <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/17/Adapter/">结构型设计模式－适配器模式(Adapter)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/16/Bridge/">结构型设计模式－桥接模式（Bridge）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/Factory/">三种工厂模式的对比</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/25/design_patterns/">设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/25/linux文本处理/">linux文本处理的常用的命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/31/ubuntu/">ubutn上常用软件的配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/30/python-vim/">用vim打造py开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/19/regex1/">正则表达式引擎的构建（1）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/18/bash/">lunix命令行学习第一篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/09/wangluoliu/">网络流24题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/26/dfsx/">dfs序总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/02/2016multi4/">2016 Multi-University Training Contest4题解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/25/liantong/">连通二分图计数</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/22/2016multi/">2016 Multi-University Training Contest 1题解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/19/hello/">无聊的吐槽</a></li></ul>

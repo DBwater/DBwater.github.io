@@ -3,19 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>无聊的吐槽 | Hexo</title>
+  <title>结构型设计模式－适配器模式(Adapter) | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="年轻人就应该利用假期的时间在学校做点事">
-<meta name="keywords" content="随笔">
+  <meta name="description" content="结构型设计模式－适配器模式的总结和实现">
+<meta name="keywords" content="设计模式,c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="无聊的吐槽">
-<meta property="og:url" content="/2016/07/19/hello/index.html">
+<meta property="og:title" content="结构型设计模式－适配器模式(Adapter)">
+<meta property="og:url" content="/2017/07/17/Adapter/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="年轻人就应该利用假期的时间在学校做点事">
-<meta property="og:updated_time" content="2017-07-09T07:09:52.639Z">
+<meta property="og:description" content="结构型设计模式－适配器模式的总结和实现">
+<meta property="og:image" content="http://osv6l88ww.bkt.clouddn.com/%E9%80%82%E9%85%8D%E5%99%A81.gif">
+<meta property="og:image" content="http://osv6l88ww.bkt.clouddn.com/%E9%80%82%E9%85%8D%E5%99%A82.gif">
+<meta property="og:updated_time" content="2017-07-18T08:59:00.252Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="无聊的吐槽">
-<meta name="twitter:description" content="年轻人就应该利用假期的时间在学校做点事">
+<meta name="twitter:title" content="结构型设计模式－适配器模式(Adapter)">
+<meta name="twitter:description" content="结构型设计模式－适配器模式的总结和实现">
+<meta name="twitter:image" content="http://osv6l88ww.bkt.clouddn.com/%E9%80%82%E9%85%8D%E5%99%A81.gif">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -203,11 +206,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-hello" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Adapter" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/07/19/hello/" class="article-date">
-      <time datetime="2016-07-18T20:29:48.000Z" itemprop="datePublished">2016-07-19</time>
+      <a href="/2017/07/17/Adapter/" class="article-date">
+      <time datetime="2017-07-17T08:15:46.000Z" itemprop="datePublished">2017-07-17</time>
 </a>
     </div>
   
@@ -220,7 +223,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      无聊的吐槽
+      结构型设计模式－适配器模式(Adapter)
     </h1>
   
 
@@ -231,7 +234,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -241,9 +244,64 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>年轻人就应该利用假期的时间在学校做点事</p>
-<a id="more"></a>
-<p>   博客更新了，鉴于以前的博客写的东西没什么价值于是就一口气删除了重写，把博客主题也稍微改了改，果然死宅还是比较喜欢黑色风格的，今天借轩神的号打了多校，可惜由于自己智障把边只建了单边，愉快的从开头一直wa的结束，果然还是自己太弱了，晚上的cf也是打的异常崩，疼么自己脑残写挂了三题23333，以第二次爆0结束，重新回到绿名，真是喜大普奔，以后博客的题解一般不会把水题放上来了，然后也会写一些自己读过的书，看过电影的感受(其实就是无聊的吐槽QwQ…..)。<br>    假期会把多校的题补上的，虽然不知道有没有机会参加明年的区域赛，不过还是要加油啊。<br>    好吧懒得打字了，就是这样。。。。。。</p>
+        <p>结构型设计模式－适配器模式的总结和实现<br><a id="more"></a></p>
+<ol>
+<li><p>概述：</p>
+<p> 将一个类的接口转换成客户希望的另外一个接口。Adapter模式使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。</p>
+</li>
+<li><p>适用场景：</p>
+<ul>
+<li>已经存在的类的接口不符合我们的需求；</li>
+<li>创建一个可以复用的类，使得该类可以与其他不相关的类或不可预见的类（即那些接口可能不一定兼容的类）协同工作；</li>
+<li>在不对每一个都进行子类化以匹配它们的接口的情况下，使用一些已经存在的子类。</li>
+</ul>
+</li>
+</ol>
+<p>适配器分为两种，类适配器和对象适配器</p>
+<h2 id="类适配器"><a href="#类适配器" class="headerlink" title="类适配器"></a>类适配器</h2><ul>
+<li><p>UML图<br><img src="http://osv6l88ww.bkt.clouddn.com/%E9%80%82%E9%85%8D%E5%99%A81.gif" alt=""></p>
+</li>
+<li><p>由图中可以看出，Adaptee类没有Request方法，而客户期待这个方法。为了使客户能够使用Adaptee类，提供一个中间环节，即类Adapter类，Adapter类实现了Target接口，并继承自Adaptee，Adapter类的Request方法重新封装了Adaptee的SpecificRequest方法，实现了适配的目的。</p>
+</li>
+<li>因为Adapter与Adaptee是继承的关系，所以这决定了这个适配器模式是类的。</li>
+<li>该适配器模式所涉及的角色包括：<ul>
+<li>目标（Target）角色：这是客户所期待的接口。因为C#不支持多继承，所以Target必须是接口，不可以是类。</li>
+<li>源（Adaptee）角色：需要适配的类。</li>
+<li>适配器（Adapter）角色：把源接口转换成目标接口。这一角色必须是类</li>
+</ul>
+</li>
+<li>代码实现：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Target</span>&#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">	Target()&#123;&#125;</div><div class="line">	<span class="keyword">virtual</span> ~Target()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Request</span><span class="params">()</span></span>=<span class="number">0</span>;</div><div class="line">&#125;;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Adaptee</span>&#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">	Adaptee()&#123;&#125;</div><div class="line">	~Adaptee()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">SpecificRequest</span><span class="params">()</span></span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"hello world"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</div><div class="line"></div><div class="line">&#125;;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Adapter</span>:</span><span class="keyword">public</span> Target,<span class="keyword">private</span> Adaptee&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	Adapter()&#123;&#125;</div><div class="line">	~Adapter()&#123;&#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Request</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">this</span>-&gt;SpecificRequest();</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	Target* p = <span class="keyword">new</span> Adapter();</div><div class="line">	p-&gt;Request();</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="对象适配器"><a href="#对象适配器" class="headerlink" title="对象适配器"></a>对象适配器</h2><ul>
+<li><p>UML图<br><img src="http://osv6l88ww.bkt.clouddn.com/%E9%80%82%E9%85%8D%E5%99%A82.gif" alt=""></p>
+</li>
+<li><p>从图中可以看出：客户端需要调用Request方法，而Adaptee没有该方法，为了使客户端能够使用Adaptee类，需要提供一个包装（Wrapper）类Adapter。这个包装类包装了一个Adaptee的实例，从而将客户端与Adaptee衔接起来。由于Adapter与Adaptee是委派关系，这决定了这个适配器模式是对象的。</p>
+</li>
+<li>该适配器模式所涉及的角色包括：<ul>
+<li>目标（Target）角色：这是客户所期待的接口。目标可以是具体的或抽象的类，也可以是接口。</li>
+<li>源（Adaptee）角色：需要适配的类。</li>
+<li>适配器（Adapter）角色：通过在内部包装（Wrap）一个Adaptee对象，把源接口转换成目标接口。</li>
+</ul>
+</li>
+<li>代码实现</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">#include&lt;iostream&gt;</div><div class="line">using namespace std;</div><div class="line">class Target&#123;</div><div class="line">public:</div><div class="line">	Target()&#123;&#125;</div><div class="line">	virtual ~Target()&#123;&#125;</div><div class="line">public:</div><div class="line">	virtual void Request()=0;</div><div class="line">&#125;;</div><div class="line">class Adaptee&#123;</div><div class="line">public:</div><div class="line">	Adaptee()&#123;&#125;</div><div class="line">	~Adaptee()&#123;&#125;</div><div class="line">public:</div><div class="line">	void SpecificRequest()&#123;cout&lt;&lt;&quot;hello world&quot;&lt;&lt;endl;&#125;</div><div class="line">&#125;;</div><div class="line">class Adapter:public Target&#123;</div><div class="line">public:</div><div class="line">	Adapter()&#123;</div><div class="line">		p = new Adaptee();</div><div class="line">	&#125;;</div><div class="line">	~Adapter()&#123;&#125;;</div><div class="line">public:</div><div class="line">	virtual void Request()&#123;</div><div class="line">		p-&gt;SpecificRequest();</div><div class="line">	&#125;</div><div class="line">private:</div><div class="line">	Adaptee *p;</div><div class="line">&#125;;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	Target *p = new Adapter();</div><div class="line">	p-&gt;Request();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>##两种适配器实现方法的比较</p>
+<ul>
+<li>类适配器：<ul>
+<li>用一个具体的Adapter类对Adaptee和Target进行匹配，结果是当我们想要匹配一个类以及所有他的子类的时候，类Adapter将不能胜任。</li>
+<li>使得Adapter可以重定义Adaptee的部分行为，因为Adapter是Adaptee的一个子类。</li>
+<li>仅仅引用了一个对象，并不需要额外的指针以间接得到Adapteee。</li>
+<li>类适配器采用“多继承”的实现方式，带来了不良的高耦合，所以一般不推荐使用。</li>
+</ul>
+</li>
+<li>对象适配器：<ul>
+<li>允许一个Adapter与多个Adaptee（Adaptee本身和他的所有子类）同时工作，Adaptee也可以一次给所有的Adaptee添加功能。</li>
+<li>使得重定义Adaptee的行为比较困难。这就需要生成Adaptee的子类并且使得Adapter引用这个子类而不是引用Adaptee本身</li>
+</ul>
+</li>
+</ul>
 
       
       
@@ -253,13 +311,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/07/19/hello/">无聊的吐槽</a></p>
+        <p><span>本文标题:</span><a href="/2017/07/17/Adapter/">结构型设计模式－适配器模式(Adapter)</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 DBwater 的个人博客">DBwater</a></p>
-        <p><span>发布时间:</span>2016年07月19日 - 04时29分</p>
-        <p><span>最后更新:</span>2017年07月09日 - 15时09分</p>
+        <p><span>发布时间:</span>2017年07月17日 - 16时15分</p>
+        <p><span>最后更新:</span>2017年07月18日 - 16时59分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/07/19/hello/" title="无聊的吐槽">/2016/07/19/hello/</a>
-            <span class="copy-path" data-clipboard-text="原文: /2016/07/19/hello/　　作者: DBwater" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/07/17/Adapter/" title="结构型设计模式－适配器模式(Adapter)">/2017/07/17/Adapter/</a>
+            <span class="copy-path" data-clipboard-text="原文: /2017/07/17/Adapter/　　作者: DBwater" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -272,15 +330,11 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/07/22/2016multi/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          2016 Multi-University Training Contest 1题解
-        
-      </div>
-    </a>
   
+    <a href="/2017/07/16/Bridge/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">结构型设计模式－桥接模式（Bridge）</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
@@ -289,7 +343,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#类适配器"><span class="toc-number">1.</span> <span class="toc-text">类适配器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象适配器"><span class="toc-number">2.</span> <span class="toc-text">对象适配器</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -337,7 +391,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/07/19/hello/" data-title="无聊的吐槽" data-url="/2016/07/19/hello/"></div>
+    <div class="ds-thread" data-thread-key="2017/07/17/Adapter/" data-title="结构型设计模式－适配器模式(Adapter)" data-url="/2017/07/17/Adapter/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -360,13 +414,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/07/22/2016multi/" title="上一篇: 2016 Multi-University Training Contest 1题解">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2017/07/16/Bridge/" title="下一篇: 结构型设计模式－桥接模式（Bridge）">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
     <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/17/Adapter/">结构型设计模式－适配器模式(Adapter)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/16/Bridge/">结构型设计模式－桥接模式（Bridge）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/Factory/">三种工厂模式的对比</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/25/design_patterns/">设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/25/linux文本处理/">linux文本处理的常用的命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/31/ubuntu/">ubutn上常用软件的配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/30/python-vim/">用vim打造py开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/19/regex1/">正则表达式引擎的构建（1）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/18/bash/">lunix命令行学习第一篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/09/wangluoliu/">网络流24题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/26/dfsx/">dfs序总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/02/2016multi4/">2016 Multi-University Training Contest4题解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/25/liantong/">连通二分图计数</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/22/2016multi/">2016 Multi-University Training Contest 1题解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/19/hello/">无聊的吐槽</a></li></ul>
