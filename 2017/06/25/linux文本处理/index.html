@@ -12,7 +12,7 @@
 <meta property="og:url" content="/2017/06/25/linux文本处理/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="linux中常用的几种用于文本处理的命令">
-<meta property="og:updated_time" content="2017-07-10T07:36:34.094Z">
+<meta property="og:updated_time" content="2017-07-30T12:56:57.302Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux文本处理的常用的命令">
 <meta name="twitter:description" content="linux中常用的几种用于文本处理的命令">
@@ -356,7 +356,7 @@
 <ul>
 <li>更改默认的分列的符号，把空格改为以：号分割每一列,如果指定多个分隔符可以-F[;,.]这样</li>
 </ul>
-<p><code>awk -F: &#39;{print $1,$2}&#39; data.txt</code></p>
+<p><code>awk -F &#39;:&#39; &#39;{print $1,$2}&#39; data.txt</code></p>
 <ul>
 <li><p>以，为默认的分割符号（两种都可以    ）</p>
 <ul>
@@ -367,14 +367,64 @@
 <li><p>awk还可以格式化输出(和上面一个输出同样的格式)：</p>
 </li>
 </ul>
-<p><code>awk -F: &#39;{printf&quot;%d,%d\n&quot;,$1,$2}&#39; data.txt</code></p>
+<p><code>awk -F &#39;{printf(&quot;%s,%s\n&quot;,$1,$2)}&#39; data.txt</code></p>
 <ul>
 <li>awk可以用条件来过滤数据,比如我们有个.csv的学生的成绩的文件，其中一位同学的名字为Tony(注意.csv文件默认以，来分割某一列)：</li>
 </ul>
-<p><code>awk -F,&#39;$1==&quot;Tony&quot;{print $1,$2}&#39; data.csv</code></p>
+<p><code>awk -F &#39;$1==&quot;Tony&quot;{print $1,$2}&#39; data.csv</code></p>
 <ul>
-<li>去掉列表的表头只需要判断NR！=1就可以<h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><h3 id="主要参数"><a href="#主要参数" class="headerlink" title="主要参数"></a>主要参数</h3>参数|功能<br>—|—<br>-c|只输出匹配的行<br>-i|匹配不区分大小写<br>-n|显示匹配行的行号<br>-l|查询包括多个文本的时候，只输出包含匹配字符的文件名<br>-v|反向匹配，即显示不匹配的行<br>-h|查询的时候不显示文件名<br>-s|不显示错误的信息<br>-r|递归的搜索一个文件夹里面的所有文件<br>–color=auto|为匹配的关键词添加颜色显示</li>
+<li>去掉列表的表头只需要判断NR！=1就可以<h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><h3 id="主要参数"><a href="#主要参数" class="headerlink" title="主要参数"></a>主要参数</h3></li>
 </ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-c</td>
+<td>只输出匹配的行有多少</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>匹配不区分大小写</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>显示匹配行的行号</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>查询包括多个文本的时候，只输出包含匹配字符的文件名</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>反向匹配，即显示不匹配的行</td>
+</tr>
+<tr>
+<td>-h</td>
+<td>查询的时候不显示文件名</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>不显示错误的信息</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>递归的搜索一个文件夹里面的所有文件</td>
+</tr>
+<tr>
+<td>-w</td>
+<td>只匹配整个单词，而不是字符串的一部分(如匹配’magic’，而不是’magical’)</td>
+</tr>
+<tr>
+<td>–color=auto</td>
+<td>为匹配的关键词添加颜色显示</td>
+</tr>
+</tbody>
+</table>
 <p>很多时候我们不关心匹配的行，而是关心匹配的上下文，这是就需要用到这样的参数了</p>
 <table>
 <thead>
@@ -411,7 +461,7 @@
         <p><span>本文标题:</span><a href="/2017/06/25/linux文本处理/">linux文本处理的常用的命令</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 DBwater 的个人博客">DBwater</a></p>
         <p><span>发布时间:</span>2017年06月25日 - 12时15分</p>
-        <p><span>最后更新:</span>2017年07月10日 - 15时36分</p>
+        <p><span>最后更新:</span>2017年07月30日 - 20时56分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/06/25/linux文本处理/" title="linux文本处理的常用的命令">/2017/06/25/linux文本处理/</a>
             <span class="copy-path" data-clipboard-text="原文: /2017/06/25/linux文本处理/　　作者: DBwater" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -427,18 +477,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/06/25/design_patterns/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/07/10/Factory/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          设计模式
+          三种工厂模式的对比
         
       </div>
     </a>
   
   
-    <a href="/2016/10/31/ubuntu/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">ubutn上常用软件的配置</div>
+    <a href="/2017/06/25/design_patterns/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">设计模式</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -520,18 +570,18 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/06/25/design_patterns/" title="上一篇: 设计模式">
+            <a href="/2017/07/10/Factory/" title="上一篇: 三种工厂模式的对比">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/10/31/ubuntu/" title="下一篇: ubutn上常用软件的配置">
+            <a href="/2017/06/25/design_patterns/" title="下一篇: 设计模式">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/17/Adapter/">结构型设计模式－适配器模式(Adapter)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/16/Bridge/">结构型设计模式－桥接模式（Bridge）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/Factory/">三种工厂模式的对比</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/25/design_patterns/">设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/25/linux文本处理/">linux文本处理的常用的命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/31/ubuntu/">ubutn上常用软件的配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/30/python-vim/">用vim打造py开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/19/regex1/">正则表达式引擎的构建（1）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/18/bash/">lunix命令行学习第一篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/09/wangluoliu/">网络流24题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/26/dfsx/">dfs序总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/02/2016multi4/">2016 Multi-University Training Contest4题解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/25/liantong/">连通二分图计数</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/22/2016multi/">2016 Multi-University Training Contest 1题解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/19/hello/">无聊的吐槽</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/03/proxy/">代理模式(Proxy)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/17/Adapter/">结构型设计模式－适配器模式(Adapter)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/16/Bridge/">结构型设计模式－桥接模式（Bridge）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/10/Factory/">三种工厂模式的对比</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/25/linux文本处理/">linux文本处理的常用的命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/25/design_patterns/">设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/31/ubuntu/">ubutn上常用软件的配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/30/python-vim/">用vim打造py开发环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/19/regex1/">正则表达式引擎的构建（1）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/18/bash/">lunix命令行学习第一篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/09/wangluoliu/">网络流24题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/26/dfsx/">dfs序总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/02/2016multi4/">2016 Multi-University Training Contest4题解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/25/liantong/">连通二分图计数</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/22/2016multi/">2016 Multi-University Training Contest 1题解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/19/hello/">无聊的吐槽</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");

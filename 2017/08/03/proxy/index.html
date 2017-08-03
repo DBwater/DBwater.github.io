@@ -3,19 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>网络流24题 | Hexo</title>
+  <title>代理模式(Proxy) | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于线性规划和网络流24题的解法">
-<meta name="keywords" content="ACM,网络流">
+  <meta name="description" content="结构型设计模式－代理模式">
+<meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="网络流24题">
-<meta property="og:url" content="/2016/09/09/wangluoliu/index.html">
+<meta property="og:title" content="代理模式(Proxy)">
+<meta property="og:url" content="/2017/08/03/proxy/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="关于线性规划和网络流24题的解法">
-<meta property="og:updated_time" content="2017-07-09T07:09:52.639Z">
+<meta property="og:description" content="结构型设计模式－代理模式">
+<meta property="og:image" content="http://osv6l88ww.bkt.clouddn.com/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F1.png">
+<meta property="og:updated_time" content="2017-08-03T06:48:43.850Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="网络流24题">
-<meta name="twitter:description" content="关于线性规划和网络流24题的解法">
+<meta name="twitter:title" content="代理模式(Proxy)">
+<meta name="twitter:description" content="结构型设计模式－代理模式">
+<meta name="twitter:image" content="http://osv6l88ww.bkt.clouddn.com/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -203,11 +205,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-wangluoliu" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-proxy" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/09/09/wangluoliu/" class="article-date">
-      <time datetime="2016-09-09T13:23:42.000Z" itemprop="datePublished">2016-09-09</time>
+      <a href="/2017/08/03/proxy/" class="article-date">
+      <time datetime="2017-08-03T06:40:19.000Z" itemprop="datePublished">2017-08-03</time>
 </a>
     </div>
   
@@ -220,7 +222,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      网络流24题
+      代理模式(Proxy)
     </h1>
   
 
@@ -231,7 +233,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ACM/">ACM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络流/">网络流</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -241,7 +243,43 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>关于线性规划和网络流24题的解法<br><a id="more"></a></p>
+        <p>结构型设计模式－代理模式<br><a id="more"></a></p>
+<h2 id="意图"><a href="#意图" class="headerlink" title="意图"></a>意图</h2><p>为其他对象提供一种代理的以控制对这个对象的访问</p>
+<h2 id="代理的情况"><a href="#代理的情况" class="headerlink" title="代理的情况"></a>代理的情况</h2><p>  <strong>在需要用比较通用和复杂的对象指针代替简单的指针的时候，使用 Proxy模式。下面是一些可以使用Proxy模式常见情况：</strong></p>
+<ol>
+<li>远程代理(Remote  Proxy): 为一个位于不同的地址空间的对象提供一个本地的代理对象。这个不同的地址空间可以是在同一台主机中，也可是在另一台主机中，远程代理又叫做大使(Ambassador)</li>
+<li>虚拟代理(Virtual Proxy): 根据需要创建开销很大的对象。如果需要创建一个资源消耗较大的对象，先创建一个消耗相对较小的对象来表示，真实对象只在需要时才会被真正创建。 </li>
+<li>保护代理(Protection Proxy): 控制对原始对象的访问。保护代理用于对象应该有不同的访问权限的时候。</li>
+<li>智能指引(Smart Reference: 取代了简单的指针，它在访问对象时执行一些附加操作。</li>
+<li>Copy-on-Write代理：它是虚拟代理的一种，把复制（克隆）操作延迟到只有在客户端真正需要时才执行。一般来说，对象的深克隆是一个开销较大的操作，Copy-on-Write代理可以让这个操作延迟，只有对象被用到的时候才被克隆。</li>
+</ol>
+<h2 id="UML图"><a href="#UML图" class="headerlink" title="UML图"></a>UML图</h2><ul>
+<li>Proxy<ul>
+<li>保存一个引用使得代理可以访问实体。若RealSubject和Subject的接口相同，proxy会引用Subject。</li>
+<li>提供一个与Subject的接口相同的接口，这样代理就可以用来代替实体。</li>
+<li>控制对实体的存取，并可能负责创建和删除它。</li>
+<li>其它功能依赖于代理的类型。</li>
+</ul>
+</li>
+<li>Subject<ul>
+<li>定义RealSubject和Proxy的共用接口，这样就可以在任何使用RealSubject的地方都可以使用Proxy。</li>
+</ul>
+</li>
+<li>RealSubject<ul>
+<li>定义Proxy所代表的实体。</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://osv6l88ww.bkt.clouddn.com/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F1.png" alt=""></p>
+<h2 id="使用实例"><a href="#使用实例" class="headerlink" title="使用实例"></a>使用实例</h2><ul>
+<li>一个游戏vip玩家有不同的权限，比如平民玩家只能使用垃圾武器，vip等级越来越高使用的武器也会越来越好，那么我们就可以通过代理来实现，控制玩家使用不同的武器</li>
+<li>小王想追求小娟，但他不认识小娟。但他的朋友小林认识小娟，所以他通过让小林帮忙送礼物的方式追求小娟,那么小林就是这个代理</li>
+</ul>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div></pre></td><td class="code"><pre><div class="line">#include&lt;iostream&gt;</div><div class="line">using namespace std;</div><div class="line"></div><div class="line">class weapon&#123;</div><div class="line">protected:</div><div class="line">	weapon()&#123;&#125;</div><div class="line">public:</div><div class="line">	virtual ~weapon()&#123;&#125;</div><div class="line">public:</div><div class="line">	virtual void normal()=0;//普通武器</div><div class="line">	virtual void rare()=0;//稀有武器</div><div class="line">	virtual void artifact()=0;//神器</div><div class="line">&#125;;</div><div class="line"></div><div class="line">class concrete_weapon:public weapon&#123;</div><div class="line">public:</div><div class="line">	concrete_weapon()&#123;&#125;</div><div class="line">	virtual ~concrete_weapon()&#123;&#125;</div><div class="line">public:</div><div class="line">	void normal()&#123;</div><div class="line">		cout&lt;&lt;&quot;装备普通武器&quot;&lt;&lt;endl;</div><div class="line">	&#125;</div><div class="line">	void rare()&#123;</div><div class="line">		cout&lt;&lt;&quot;装备稀有武器&quot;&lt;&lt;endl;</div><div class="line">	&#125;</div><div class="line">	void artifact()&#123;</div><div class="line">		cout&lt;&lt;&quot;装备神器&quot;&lt;&lt;endl;</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line">class playervip0:public weapon&#123;</div><div class="line">public:</div><div class="line">	playervip0()&#123;</div><div class="line">		weapon0 = new concrete_weapon();</div><div class="line">	&#125;</div><div class="line">	virtual ~playervip0()&#123;</div><div class="line">		delete weapon0;</div><div class="line">	&#125;</div><div class="line">public:</div><div class="line">	void normal()&#123;</div><div class="line">		cout&lt;&lt;&quot;装备普通武器&quot;&lt;&lt;endl;</div><div class="line">	&#125;</div><div class="line">	void rare()&#123;</div><div class="line">		cout&lt;&lt;&quot;对不起，您没有权限装备稀有武器,请充值到vip1&quot;&lt;&lt;endl;</div><div class="line">	&#125;</div><div class="line">	void artifact()&#123;</div><div class="line">		cout&lt;&lt;&quot;对不起，您没有权限装备神器,请充值到vip2&quot;&lt;&lt;endl;</div><div class="line">	&#125;</div><div class="line">private:</div><div class="line">	weapon* weapon0;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">class playervip1:public weapon&#123;</div><div class="line">public:</div><div class="line">	playervip1()&#123;</div><div class="line">		weapon1 = new concrete_weapon();</div><div class="line">	&#125;</div><div class="line">	virtual ~playervip1()&#123;</div><div class="line">		delete weapon1;</div><div class="line">	&#125;</div><div class="line">public:</div><div class="line">	void normal()&#123;</div><div class="line">		cout&lt;&lt;&quot;装备普通武器&quot;&lt;&lt;endl;</div><div class="line">	&#125;</div><div class="line">	void rare()&#123;</div><div class="line">		cout&lt;&lt;&quot;装备稀有武器&quot;&lt;&lt;endl;</div><div class="line">	&#125;</div><div class="line">	void artifact()&#123;</div><div class="line">		cout&lt;&lt;&quot;对不起，您没有权限装备神器，请充值到vip2&quot;&lt;&lt;endl;</div><div class="line">	&#125;</div><div class="line">private:</div><div class="line">	weapon* weapon1;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">class playervip2:public weapon&#123;</div><div class="line">public:</div><div class="line">	playervip2()&#123;</div><div class="line">		weapon2 = new concrete_weapon();</div><div class="line">	&#125;</div><div class="line">	virtual ~playervip2()&#123;</div><div class="line">		delete weapon2;</div><div class="line">	&#125;</div><div class="line">public:</div><div class="line">	void normal()&#123;</div><div class="line">		cout&lt;&lt;&quot;装备普通武器&quot;&lt;&lt;endl;</div><div class="line">	&#125;</div><div class="line">	void rare()&#123;</div><div class="line">		cout&lt;&lt;&quot;装备稀有武器&quot;&lt;&lt;endl;</div><div class="line">	&#125;</div><div class="line">	void artifact()&#123;</div><div class="line">		cout&lt;&lt;&quot;装备神器&quot;&lt;&lt;endl;</div><div class="line">	&#125;</div><div class="line">private:</div><div class="line">	weapon* weapon2;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	playervip0* vip0 = new playervip0();</div><div class="line">	vip0-&gt;normal();</div><div class="line">	vip0-&gt;rare();</div><div class="line">	vip0-&gt;artifact();</div><div class="line">	</div><div class="line">	playervip1* vip1 = new playervip1();</div><div class="line">	vip1-&gt;normal();</div><div class="line">	vip1-&gt;rare();</div><div class="line">	vip1-&gt;artifact();</div><div class="line"></div><div class="line">	playervip2* vip2 = new playervip2();</div><div class="line">	vip2-&gt;normal();</div><div class="line">	vip2-&gt;rare();</div><div class="line">	vip2-&gt;artifact();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="代理模式的缺点"><a href="#代理模式的缺点" class="headerlink" title="代理模式的缺点"></a>代理模式的缺点</h2><ul>
+<li>由于在客户端和真实主题之间增加了代理对象，因此有些类型的代理模式可能会造成请求的处理速度变慢。</li>
+<li>实现代理模式需要额外的工作，有些代理模式的实现非常复杂。</li>
+</ul>
 
       
       
@@ -251,13 +289,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/09/09/wangluoliu/">网络流24题</a></p>
+        <p><span>本文标题:</span><a href="/2017/08/03/proxy/">代理模式(Proxy)</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 DBwater 的个人博客">DBwater</a></p>
-        <p><span>发布时间:</span>2016年09月09日 - 21时23分</p>
-        <p><span>最后更新:</span>2017年07月09日 - 15时09分</p>
+        <p><span>发布时间:</span>2017年08月03日 - 14时40分</p>
+        <p><span>最后更新:</span>2017年08月03日 - 14时48分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/09/09/wangluoliu/" title="网络流24题">/2016/09/09/wangluoliu/</a>
-            <span class="copy-path" data-clipboard-text="原文: /2016/09/09/wangluoliu/　　作者: DBwater" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/08/03/proxy/" title="代理模式(Proxy)">/2017/08/03/proxy/</a>
+            <span class="copy-path" data-clipboard-text="原文: /2017/08/03/proxy/　　作者: DBwater" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -270,18 +308,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/10/18/bash/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          lunix命令行学习第一篇
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/08/26/dfsx/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">dfs序总结</div>
+    <a href="/2017/07/17/Adapter/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">结构型设计模式－适配器模式(Adapter)</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -292,7 +321,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#意图"><span class="toc-number">1.</span> <span class="toc-text">意图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代理的情况"><span class="toc-number">2.</span> <span class="toc-text">代理的情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UML图"><span class="toc-number">3.</span> <span class="toc-text">UML图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用实例"><span class="toc-number">4.</span> <span class="toc-text">使用实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">5.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代理模式的缺点"><span class="toc-number">6.</span> <span class="toc-text">代理模式的缺点</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -340,7 +369,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/09/09/wangluoliu/" data-title="网络流24题" data-url="/2016/09/09/wangluoliu/"></div>
+    <div class="ds-thread" data-thread-key="2017/08/03/proxy/" data-title="代理模式(Proxy)" data-url="/2017/08/03/proxy/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -363,13 +392,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/10/18/bash/" title="上一篇: lunix命令行学习第一篇">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/08/26/dfsx/" title="下一篇: dfs序总结">
+            <a href="/2017/07/17/Adapter/" title="下一篇: 结构型设计模式－适配器模式(Adapter)">
                 <i class="fa fa-angle-right"></i>
             </a>
         
